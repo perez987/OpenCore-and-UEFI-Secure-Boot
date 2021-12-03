@@ -159,7 +159,7 @@ _BIOS_
 
 Motherboard menu: in the Secure Boot section there are usually options to restore the default factory keys or to edit variables separately. On my motherboard (Z390 Aorus Elite) this menu is in Boot >> Secure Boot tab >> Key Management.
 
-![Key Management](https://github.com/perez987/UEFI-Secure-Boot-and-OpenCore/blob/main/Key-Management.jpeg?raw=true)
+![Key Management](https://github.com/perez987/UEFI-Secure-Boot-and-OpenCore/blob/main/Key-Management.jpeg)
 
 If you have modified the keystores before (if it is not the first time it's done) it is highly recommended, to avoid errors, restore default factory keys before adding / editing the new ones >> Restore Factory keys >> Install factory defaults >> Yes.
 
@@ -173,6 +173,6 @@ To replace one variable with another: select Update >> search in the USB device 
 To see the details, select Details >> variable's details are displayed.\
 In the case of Authorized Signatures, after adding db.auth I see 4 authorized signatures: the one I created (ISK Image Signing Key), the two from Microsoft to be able to boot Windows with UEFI Secure Boot enabled and the one from Canonical (extracted from the Ubuntu shimx64.efi file with the shim-to-cert.tool tool included in OpenCore) to also be able to boot Ubuntu (in a separate disk, not in WSL) with UEFI Secure Boot.
 
-DB-details.jpeg
+![DB Details](https://github.com/perez987/UEFI-Secure-Boot-and-OpenCore/blob/main/DB-details.jpeg?raw=true)
 
 

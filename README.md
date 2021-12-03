@@ -47,13 +47,13 @@ If at any time you forget the Linux password >> open PowerShell >> `wsl -u root`
 
 In the Ubuntu Terminal window:
 
->sudo apt update && sudo apt upgrade\
+`sudo apt update && sudo apt upgrade`\
 (to update repositories of installation packages)\
->sudo apt-get install unzip\
+`sudo apt-get install unzip`\
 (unzip is not installed by default with WSL Ubuntu, zip utility is already installed)\
->sudo apt-get install sbsigntool\
+`sudo apt-get install sbsigntool`\
 (digital signature utility for UEFI Secure Boot)\
->sudo apt-get install efitools\
+`sudo apt-get install efitools`\
 (tools to manage UEFI Secure Boot variables).
 
 Openssl tool is also required but it is already installed on Ubuntu.

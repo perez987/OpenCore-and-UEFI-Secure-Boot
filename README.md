@@ -159,7 +159,7 @@ _BIOS_
 
 Motherboard menu: in the Secure Boot section there are usually options to restore the default factory keys or to edit variables separately. On my motherboard (Z390 Aorus Elite) this menu is in Boot >> Secure Boot tab >> Key Management.
 
-![Key Management](https://github.com/perez987/UEFI-Secure-Boot-and-OpenCore/blob/main/Key-Management.jpeg)
+![Key Management](Key-Management.jpeg)
 
 If you have modified the keystores before (if it is not the first time it's done) it is highly recommended, to avoid errors, restore default factory keys before adding / editing the new ones >> Restore Factory keys >> Install factory defaults >> Yes.
 

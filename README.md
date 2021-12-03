@@ -167,7 +167,7 @@ If you have modified the keystores before (if it is not the first time it's done
 
 Now you can edit the keys. Select the variable that you are going to modify in this order: Authorized Signatures >> Key Exchange Keys >> Platform Key (PK). In each variable you can see the details, export it, update it (replace), add it to the existing ones or delete it. For example, with Authorized Signatures, options menu is Details / Export / Update / Append / Delete.
 
-DB-options.jpeg
+https://github.com/perez987/UEFI-Secure-Boot-and-OpenCore/blob/main/DB-options.jpeg
 
 To replace one variable with another: select Update >> search in the USB device >> locate and select db.auth >> this database of allowed signatures replaces the current one. Likewise with Append if you want to add it to the existing one instead of replacing it. You can use Append with db.auth and kek.auth but pk.auth only allows replacement.\
 To see the details, select Details >> variable's details are displayed.\

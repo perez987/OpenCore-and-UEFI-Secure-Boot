@@ -147,4 +147,24 @@ At the end we will have in the Signed folder the OpenCore .efi files digitally s
 
 **5. Include signatures into the firmware**
 
+Final step is to shove the signature files into the firmware, replacing the existing variables:
+
+- db.auth >> Authorized Signatures
+- kek.auth >> KEK (Key Exchange Keys)
+- pk.auth >> PK (Platform key).
+
+This can be done in 2 ways: from the configuration menu of the motherboard or with the specialized tool KeyTool.
+
+_BIOS_
+
+Motherboard menu: in the Secure Boot section there are usually options to restore the default factory keys or to edit variables separately. On my motherboard (Z390 Aorus Elite) this menu is in Boot >> Secure Boot tab >> Key Management.
+![Key-Management.jpeg]()
+If you have modified the keystores before (if it is not the first time it's done) it is highly recommended, to avoid errors, restore default factory keys before adding / editing the new ones >> Restore Factory keys >> Install factory defaults >> Yes.
+![Restory Factory Keys.jpeg]()
+Now you can edit the keys. Select the variable that you are going to modify in this order: Authorized Signatures >> Key Exchange Keys >> Platform Key (PK). In each variable you can see the details, export it, update it (replace), add it to the existing ones or delete it. For example, with Authorized Signatures, options menu is Details / Export / Update / Append / Delete.
+DB options.jpeg
+To replace one variable with another: select Update >> search in the USB device >> locate and select db.auth >> this database of allowed signatures replaces the current one. Likewise with Append if you want to add it to the existing one instead of replacing it. You can use Append with db.auth and kek.auth but pk.auth only allows replacement.
+To see the details, select Details >> variable's details are displayed.
+In the case of Authorized Signatures, after adding db.auth I see 4 authorized signatures: the one I created (ISK Image Signing Key), the two from Microsoft to be able to boot Windows with UEFI Secure Boot enabled and the one from Canonical (extracted from the Ubuntu shimx64.efi file with the shim-to-cert.tool tool included in OpenCore) to also be able to boot Ubuntu (in a separate disk, not in WSL) with UEFI Secure Boot.
+DB details.jpeg
 

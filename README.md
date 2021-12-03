@@ -95,19 +95,19 @@ Digitally sign ESL files:
 Timestamp is 2021-11-2 00:05:40\
 Authentication Payload size 887\
 Signature of size 1221\
-Signature at: 40`
+Signature at: 40`\
 (KEK is signed with PK)\
 `sign-efi-sig-list -k PK.key -c PK.pem KEK KEK.esl KEK.auth\
 Timestamp is 2021-11-2 00:05:47\
 Authentication Payload size 891\
 Signature of size 1221\
-Signature at: 40`
+Signature at: 40`\
 (the database is signed with KEK).\
 `sign-efi-sig-list -k KEK.key -c KEK.pem db db.esl db.auth\
 Timestamp is 2021-11-2 00:05:52\
 Authentication Payload size 4042\
 Signature of size 1224\
-Signature at: 40`
+Signature at: 40`\
 
 The .auth files (PK.auth, kek.auth and db.auth) will be used to integrate our signatures into the firmware. Copy these files to a folder outside Ubuntu so that they are accessible from Windows. The ISK.key and ISK.pem files will be used to sign OpenCore files.
 

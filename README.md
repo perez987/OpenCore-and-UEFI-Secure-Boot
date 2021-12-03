@@ -119,7 +119,7 @@ Signature at: 40`\
 Timestamp is 2021-11-2 00:05:52\
 Authentication Payload size 4042\
 Signature of size 1224\
-Signature at: 40`\
+Signature at: 40`
 
 The .auth files (PK.auth, kek.auth and db.auth) will be used to integrate our signatures into the firmware. Copy these files to a folder outside Ubuntu so that they are accessible from Windows. The ISK.key and ISK.pem files will be used to sign OpenCore files.
 

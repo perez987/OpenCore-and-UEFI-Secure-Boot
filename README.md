@@ -23,9 +23,9 @@ This task can be simplified thanks to a not widely used infrastructure that exis
 **Installing WSL from command line (Ubuntu by default)**
 
 Open PowerShell as Administrator\
-Run `wsl --install` command >> [output](https://gist.github.com/perez987/4e03c8e731d3b9e60e09c274e225ed82).
-`PS C: /Users/me> wsl --install`\
-`Installing: Virtual Machine Platform`\
+Run `wsl --install` command:\
+`PS C: /Users/me> wsl --install\
+Installing: Virtual Machine Platform`\
 `Virtual Machine Platform has been installed.`\
 `Installing: Windows Subsystem for Linux`\
 `Windows Subsystem for Linux has been installed.`\

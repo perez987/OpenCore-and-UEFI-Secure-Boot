@@ -89,7 +89,7 @@ cert-to-efi-sig-list -g $ (uuidgen) MicCorUEFCA2011_2011-06-27.pem MicCorUEFCA20
 Create the database including the signed Microsoft certificates:\
 `cat ISK.esl MicWinProPCA2011_2011-10-19.esl MicCorUEFCA2011_2011-06-27.esl> db.esl`
 
-Digitally sign ESL files:
+Digitally sign ESL files:\
 (PK signs with herself)\
 `sign-efi-sig-list -k PK.key -c PK.pem PK PK.esl PK.auth\
 Timestamp is 2021-11-2 00:05:40\

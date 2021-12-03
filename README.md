@@ -24,19 +24,19 @@ This task can be simplified thanks to a not widely used infrastructure that exis
 
 Open PowerShell as Administrator >> run `wsl --install` command:
 
-> PS C: / Users / miliuco> wsl --install
-Installing: Virtual Machine Platform
-Virtual Machine Platform has been installed.
-Installing: Windows Subsystem for Linux
-Windows Subsystem for Linux has been installed.
-Downloading: WSL Kernel
-Installing: WSL Kernel
-WSL Kernel has been installed.
-Downloading: GUI App Technical Support
-Installing: GUI application technical support
-GUI Application Support has been installed.
-Downloading: Ubuntu
-The requested operation was successful. The changes will take effect after the system reboots.
+> PS C: / Users / miliuco> wsl --install\
+Installing: Virtual Machine Platform\
+Virtual Machine Platform has been installed.\
+Installing: Windows Subsystem for Linux\
+Windows Subsystem for Linux has been installed.\
+Downloading: WSL Kernel\
+Installing: WSL Kernel\
+WSL Kernel has been installed.\
+Downloading: GUI App Technical Support\
+Installing: GUI application technical support\
+GUI Application Support has been installed.\
+Downloading: Ubuntu\
+The requested operation was successful. The changes will take effect after the system reboots.\
 
 `PS C: /Users/me> wsl --install`\
 `Installing: Virtual Machine Platform`\

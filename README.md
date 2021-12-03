@@ -36,25 +36,11 @@ Downloading: GUI App Technical Support\
 Installing: GUI application technical support\
 GUI Application Support has been installed.\
 Downloading: Ubuntu\
-The requested operation was successful. The changes will take effect after the system reboots.\
-
-`PS C: /Users/me> wsl --install`\
-`Installing: Virtual Machine Platform`\
-`Virtual Machine Platform has been installed.`\
-`Installing: Windows Subsystem for Linux`\
-`Windows Subsystem for Linux has been installed.`\
-`Downloading: WSL Kernel`\
-`Installing: WSL Kernel`\
-`WSL Kernel has been installed.`\
-`Downloading: GUI App Technical Support`\
-`Installing: GUI application technical support`\
-`GUI Application Support has been installed.`\
-`Downloading: Ubuntu`\
-`The requested operation was successful. The changes will take effect after the system reboots.`
+The requested operation was successful. The changes will take effect after the system reboots.
 
 At the end, it requests username and password (they are not related to the ones you use in Windows). This will be the default account and will automatically log into the home folder. It is an administrator account and can run commands with sudo.\
 WSL boots from the Ubuntu icon in the application menu or by typing ubuntu in the command line window. A Bash Terminal window is shown with the prompt in our user folder.\
-Windows disks are accessible in the path */mnt/c*, */mnt/d* and so on. The Linux system is accessible from Windows Explorer >> Linux. It is not recommended to modify Ubuntu elements from Windows Explorer, it is preferable to do it from within WSL.
+Windows disks are accessible in the path */mnt/c*, */mnt/d* and so on. The Linux system is accessible from Windows Explorer >> Linux. It is not recommended to modify Ubuntu elements from Windows Explorer, it is preferable to do it from within WSL.\
 If at any time you forget the Linux password >> open PowerShell >> `wsl -u root` (open Ubuntu in the Windows user's directory) >> `passwd <user>` >> request a new password >> exit.
 
 **3. Installing the tools**
@@ -193,7 +179,7 @@ In the case of Authorized Signatures, after adding db.auth I see 4 authorized si
 KeyTool
 
 KeyTool is included in the efitools Linux package, you can find the utility in `/usr/share/efitools/efi/KeyTool.efi`.\
-Copy KeyTool.efi with the name bootx64.efi into the EFI folder of an USB device (formatted as FAT32 and MBR). Along with bootx64.efi (KeyTool.efi), the EFI folder on the USB device must also include the files db.auth, kek.auth and pk.auth.
+Copy KeyTool.efi with the name bootx64.efi into the EFI folder of an USB device (formatted as FAT32 and MBR). Along with bootx64.efi (KeyTool.efi), the EFI folder on the USB device must also include the files db.auth, kek.auth and pk.auth.\
 When booting from this USB, it launches the graphical interface of the tool. When keytool starts we see a menu with the options Save Keys / Edit Keys / Execute Binary / Exit. Click on Edit Keys.
 
 ![KeyTool](img/keytool1.jpg?raw=true)

@@ -155,7 +155,7 @@ Final step is to shove the signature files into the firmware, replacing the exis
 
 This can be done in 2 ways: from the configuration menu of the motherboard or with the specialized tool KeyTool.
 
-*BIOS*
+BIOS
 
 In the Secure Boot section there are usually options to restore the default factory keys or to edit variables separately. On my motherboard (Z390 Aorus Elite) this menu is in Boot >> Secure Boot tab >> Key Management.
 
@@ -177,12 +177,20 @@ In the case of Authorized Signatures, after adding db.auth I see 4 authorized si
 
 KeyTool
 
-KeyTool is included in the efitools Linux package, you can find the utility in /usr/share/efitools/efi/KeyTool.efi. Copy KeyTool.efi with the name bootx64.efi into the EFI folder of an USB device (formatted as FAT32 and MBR). Along with bootx64.efi (KeyTool.efi), the EFI folder on the USB device must also include the files db.auth, kek.auth and pk.auth.
-When booting from this bootable USB, it launches the graphical interface of the tool. When keytool starts we see a menu with the options Save Keys / Edit Keys / Execute Binary / Exit. Click on Edit Keys.
-keytool1.jpg
-Select the variable that you are going to modify in this order: The Allowed Signature Database (db) >> The Key Exchange Keys Database (kek) >> The Platform Key (pk).
-First select The Allowed Signature Database (db) >> Replace Keys >> USB device >> db.auth >> click Enter >> return to the list of variables (message is dislayed only in case of error).
-keytool2.jpg keytool3.jpg keytool4.jpg
+KeyTool is included in the efitools Linux package, you can find the utility in `/usr/share/efitools/efi/KeyTool.efi`.\
+Copy KeyTool.efi with the name bootx64.efi into the EFI folder of an USB device (formatted as FAT32 and MBR). Along with bootx64.efi (KeyTool.efi), the EFI folder on the USB device must also include the files db.auth, kek.auth and pk.auth.
+When booting from this USB, it launches the graphical interface of the tool. When keytool starts we see a menu with the options Save Keys / Edit Keys / Execute Binary / Exit. Click on Edit Keys.
+
+![KeyTool](img/keytool1.jpg?raw=true)
+
+Select the variable that you are going to modify in this order: The Allowed Signature Database (db) >> The Key Exchange Keys Database (kek) >> The Platform Key (pk). First select The Allowed Signature Database (db) >> Replace Keys >> USB device >> db.auth >> click Enter >> return to the list of variables (message is dislayed only in case of error).
+
+![KeyTool](img/keytool2.jpg?raw=true)
+
+![KeyTool](img/keytool3.jpg?raw=true)
+
+![KeyTool](img/keytool4.jpg?raw=true)
+
 Repeat the same for The Key Exchange Keys Database (kek) and The Platform Key (pk).
 
 After introducing db.auth, kek.auth and pk.auth in the firmware we can boot OpenCore and macOS with UEFI Secure Boot enabled.

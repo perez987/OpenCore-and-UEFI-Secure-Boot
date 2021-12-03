@@ -1,7 +1,7 @@
 # OpenCore and UEFI Secure Boot with Windows Subsystem for Linux
 This guide proposes the activation of UEFI Secure Boot in OpenCore from a Windows 11 with Windows Subsystem for Linux, so the installation and configuration of a complete Linux system is not necessary. Some knowledge of basic Linux commands is still required, but less time and effort is required.
  
-**Preface**
+**_Preface_**
  
 Motherboard UEFI firmware has Secure Boot capability so that only digitally signed boot loader files with keys that are embedded in the firmware are allowed. With UEFI Secure Boot enabled:
 
@@ -20,7 +20,7 @@ This task can be simplified thanks to a not widely used infrastructure that exis
 
 **Note**: in the issue number 1796 of the OpenCore bug tracker "Support UEFI SecureBoot within OpenCore" vit9696 comments about developing a simpler method of doing this, probably from within OpenCore and macOS and without the need to integrate the keys into the UEFI signature, but it is something that does not have high priority so we have to wait for updates.
 
-**Installing WSL from command line (Ubuntu by default)**
+**_Installing WSL from command line_**
 
 Open PowerShell as Administrator\
 Run `wsl --install` command:\
@@ -43,7 +43,7 @@ WSL boots from the Ubuntu icon in the application menu or by typing ubuntu in th
 Windows disks are accessible in the path* /mnt/c*, */mnt/d* and so on. The Linux system is accessible from Windows Explorer >> Linux. It is not recommended to modify Ubuntu elements from Windows Explorer, it is preferable to do it from within WSL.
 If at any time you forget the Linux password >> open PowerShell >> `wsl -u root` (open Ubuntu in the Windows user's directory) >> `passwd <user>` >> request a new password >> exit.
 
-**Installing the tools**
+**_Installing the tools_**
 
 In the Ubuntu Terminal window:
 
@@ -61,7 +61,7 @@ Openssl tool is also required but it is already installed on Ubuntu.
 If we want to see the utilities already installed in Ubuntu we can use the command
 `sudo apt list --installed`.
 
-**Creating the keys to shove into the firmware and sign OpenCore**
+**_Creating the keys to shove into the firmware and sign OpenCore_**
 
 Create a working dir:\
 `mkdir efykeys
@@ -124,7 +124,7 @@ Signature at: 40`\
 
 The .auth files (PK.auth, kek.auth and db.auth) will be used to integrate our signatures into the firmware. Copy these files to a folder outside Ubuntu so that they are accessible from Windows. The ISK.key and ISK.pem files will be used to sign OpenCore files.
 
-**Signing OpenCore files**
+**_Signing OpenCore files_**
 
 Files with .efi extension must be signed: OpenCore.efi, BOOTx64.efi, Drivers and Tools.
 

@@ -159,11 +159,11 @@ _BIOS_
 
 Motherboard menu: in the Secure Boot section there are usually options to restore the default factory keys or to edit variables separately. On my motherboard (Z390 Aorus Elite) this menu is in Boot >> Secure Boot tab >> Key Management.
 
-![Key-Management.jpeg]()
+![Key Management](https://github.com/perez987/UEFI-Secure-Boot-and-OpenCore/blob/main/Key-Management.jpeg?raw=true)
 
 If you have modified the keystores before (if it is not the first time it's done) it is highly recommended, to avoid errors, restore default factory keys before adding / editing the new ones >> Restore Factory keys >> Install factory defaults >> Yes.
 
-![Restory-Factory Keys.jpeg]()
+![Restory Factory Keys.jpeg](https://github.com/perez987/UEFI-Secure-Boot-and-OpenCore/blob/main/Restory-Factory Keys.jpeg?raw=true)
 
 Now you can edit the keys. Select the variable that you are going to modify in this order: Authorized Signatures >> Key Exchange Keys >> Platform Key (PK). In each variable you can see the details, export it, update it (replace), add it to the existing ones or delete it. For example, with Authorized Signatures, options menu is Details / Export / Update / Append / Delete.
 

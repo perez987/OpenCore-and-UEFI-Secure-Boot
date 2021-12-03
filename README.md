@@ -163,7 +163,7 @@ Motherboard menu: in the Secure Boot section there are usually options to restor
 
 If you have modified the keystores before (if it is not the first time it's done) it is highly recommended, to avoid errors, restore default factory keys before adding / editing the new ones >> Restore Factory keys >> Install factory defaults >> Yes.
 
-![Restory Factory Keys.jpeg](https://github.com/perez987/UEFI-Secure-Boot-and-OpenCore/blob/main/Restory-Factory Keys.jpeg?raw=true)
+![Restory Factory Keys.jpeg](https://github.com/perez987/UEFI-Secure-Boot-and-OpenCore/blob/main/Restory-Factory-Keys.jpeg?raw=true)
 
 Now you can edit the keys. Select the variable that you are going to modify in this order: Authorized Signatures >> Key Exchange Keys >> Platform Key (PK). In each variable you can see the details, export it, update it (replace), add it to the existing ones or delete it. For example, with Authorized Signatures, options menu is Details / Export / Update / Append / Delete.
 

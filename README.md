@@ -163,16 +163,16 @@ Motherboard menu: in the Secure Boot section there are usually options to restor
 
 If you have modified the keystores before (if it is not the first time it's done) it is highly recommended, to avoid errors, restore default factory keys before adding / editing the new ones >> Restore Factory keys >> Install factory defaults >> Yes.
 
-![Restory Factory Keys.jpeg](https://github.com/perez987/UEFI-Secure-Boot-and-OpenCore/blob/main/Restory-Factory-Keys.jpeg?raw=true)
+![Restory Factory Keys.jpeg](img/Restory-Factory-Keys.jpeg?raw=true)
 
 Now you can edit the keys. Select the variable that you are going to modify in this order: Authorized Signatures >> Key Exchange Keys >> Platform Key (PK). In each variable you can see the details, export it, update it (replace), add it to the existing ones or delete it. For example, with Authorized Signatures, options menu is Details / Export / Update / Append / Delete.
 
-![DB Options](https://github.com/perez987/UEFI-Secure-Boot-and-OpenCore/blob/main/DB-options.jpeg?raw=true)
+![DB Options](img/DB-options.jpeg?raw=true)
 
 To replace one variable with another: select Update >> search in the USB device >> locate and select db.auth >> this database of allowed signatures replaces the current one. Likewise with Append if you want to add it to the existing one instead of replacing it. You can use Append with db.auth and kek.auth but pk.auth only allows replacement.\
 To see the details, select Details >> variable's details are displayed.\
 In the case of Authorized Signatures, after adding db.auth I see 4 authorized signatures: the one I created (ISK Image Signing Key), the two from Microsoft to be able to boot Windows with UEFI Secure Boot enabled and the one from Canonical (extracted from the Ubuntu shimx64.efi file with the shim-to-cert.tool tool included in OpenCore) to also be able to boot Ubuntu (in a separate disk, not in WSL) with UEFI Secure Boot.
 
-![DB Details](https://github.com/perez987/UEFI-Secure-Boot-and-OpenCore/blob/main/DB-details.jpeg?raw=true)
+![DB Details](img/DB-details.jpeg?raw=true)
 
 

@@ -22,8 +22,7 @@ This task can be simplified thanks to a not widely used infrastructure that exis
 
 **2. Installing WSL from command line**
 
-Open PowerShell as Administrator\
-Run `wsl --install` command:\
+Open PowerShell as Administrator >> run `wsl --install` command:\
 `PS C: /Users/me> wsl --install`\
 `Installing: Virtual Machine Platform`\
 `Virtual Machine Platform has been installed.`\
@@ -36,7 +35,7 @@ Run `wsl --install` command:\
 `Installing: GUI application technical support`\
 `GUI Application Support has been installed.`\
 `Downloading: Ubuntu`\
-`The requested operation was successful. The changes will take effect after the system reboots.`\
+`The requested operation was successful. The changes will take effect after the system reboots.`
 
 At the end, it requests username and password (they are not related to the ones you use in Windows). This will be the default account and will automatically log into the home folder. It is an administrator account and can run commands with sudo.\
 WSL boots from the Ubuntu icon in the application menu or by typing ubuntu in the command line window. A Bash Terminal window is shown with the prompt in our user folder.\

@@ -24,19 +24,19 @@ This task can be simplified thanks to a not widely used infrastructure that exis
 
 Open PowerShell as Administrator\
 Run `wsl --install` command >> [output](https://gist.github.com/perez987/4e03c8e731d3b9e60e09c274e225ed82).
-`PS C: /Users/me> wsl --install\
-Installing: Virtual Machine Platform\
-Virtual Machine Platform has been installed.\
-Installing: Windows Subsystem for Linux\
-Windows Subsystem for Linux has been installed.\
-Downloading: WSL Kernel\
-Installing: WSL Kernel\
-WSL Kernel has been installed.\
-Downloading: GUI App Technical Support\
-Installing: GUI application technical support\
-GUI Application Support has been installed.\
-Downloading: Ubuntu\
-The requested operation was successful. The changes will take effect after the system reboots.`\
+`PS C: /Users/me> wsl --install\`
+`Installing: Virtual Machine Platform\`
+`Virtual Machine Platform has been installed.\`
+`Installing: Windows Subsystem for Linux\`
+`Windows Subsystem for Linux has been installed.\`
+`Downloading: WSL Kernel\`
+`Installing: WSL Kernel\`
+`WSL Kernel has been installed.\`
+`Downloading: GUI App Technical Support\`
+`Installing: GUI application technical support\`
+`GUI Application Support has been installed.\`
+`Downloading: Ubuntu\`
+`The requested operation was successful. The changes will take effect after the system reboots.\`
 
 At the end, it requests username and password (they are not related to the ones you use in Windows). This will be the default account and will automatically log into the home folder. It is an administrator account and can run commands with sudo.\
 WSL boots from the Ubuntu icon in the application menu or by typing ubuntu in the command line window. A Bash Terminal window is shown with the prompt in our user folder.\

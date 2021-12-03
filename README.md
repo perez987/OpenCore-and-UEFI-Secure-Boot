@@ -193,4 +193,6 @@ Select the variable that you are going to modify in this order: The Allowed Sign
 
 Repeat the same for The Key Exchange Keys Database (kek) and The Platform Key (pk).
 
-After introducing db.auth, kek.auth and pk.auth in the firmware we can boot OpenCore and macOS with UEFI Secure Boot enabled.
+**6. Ending**
+
+After introducing db.auth, kek.auth and pk.auth in the firmware we can boot signed OpenCore and macOS with UEFI Secure Boot enabled.

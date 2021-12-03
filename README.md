@@ -22,7 +22,7 @@ This task can be simplified thanks to a not widely used infrastructure that exis
 
 **Installing WSL from command line (Ubuntu by default)**
 
-Open PowerShell as Administrator
+Open PowerShell as Administrator\
 Run `wsl --install` command >> [output](https://gist.github.com/perez987/4e03c8e731d3b9e60e09c274e225ed82).
 
 At the end, it requests username and password (they are not related to the ones you use in Windows). This will be the default account and will automatically log into the home folder. It is an administrator account and can run commands with sudo.\
@@ -50,59 +50,59 @@ If we want to see the utilities already installed in Ubuntu we can use the comma
 
 **Creating the keys to shove into the firmware and sign OpenCore**
 
-Create a working dir:
+Create a working dir:\
 `mkdir efykeys
 cd efykeys`
 
-Create PK (Platform Key):
+Create PK (Platform Key):\
 `openssl req -new -x509 -newkey rsa: 2048 -sha256 -days 3650 -nodes -subj "/ CN = NAME PK Platform Key /" -keyout PK.key -out PK.pem`
 
-Create KEK (Key Exchange Key):
+Create KEK (Key Exchange Key):\
 `openssl req -new -x509 -newkey rsa: 2048 -sha256 -days 3650 -nodes -subj "/ CN = NAME KEK Exchange Key /" -keyout KEK.key -out KEK.pem`
 
-Create ISK (Initial Supplier Key):
+Create ISK (Initial Supplier Key):\
 `openssl req -new -x509 -newkey rsa: 2048 -sha256 -days 3650 -nodes -subj "/ CN = NAME ISK Image Signing Key /" -keyout ISK.key -out ISK.pem`
 
 Note: replace NAME with something characteristic that helps you to recognise the keys when you view them from the UEFI menu, for example KEYS2021.
 
-Correct permissions for key files:
+Correct permissions for key files:\
 `chmod 0600 * .key`
 
-Download Microsoft certificates:
-[Microsoft Windows Production CA 2011](http://go.microsoft.com/fwlink/?LinkID=321192)
+Download Microsoft certificates:\
+[Microsoft Windows Production CA 2011](http://go.microsoft.com/fwlink/?LinkID=321192)\
 [Microsoft UEFI driver signing CA key](http://go.microsoft.com/fwlink/?LinkId=321194)
 
-Copy Windows certificates to the working folder:
+Copy Windows certificates to the working folder:\
 `cp /mnt/c/Users/me/Downloads/MicCorUEFCA2011_2011-06-27.crt/home/me/efikeys/cp /mnt/c/Users/me/Downloads/MicWinProPCA2011_2011-10-19.crt/home/yo/efikeys/`
 
-Digitally sign Microsoft certificates:
+Digitally sign Microsoft certificates:\
 `openssl x509 -in MicWinProPCA2011_2011-10-19.crt -inform DER -out MicWinProPCA2011_2011-10-19.pem -outform PEM
 openssl x509 -in MicCorUEFCA2011_2011-06-27.crt -inform DER -out MicCorUEFCA2011_2011-06-27.pem -outform PEM`
 
-Convert PEM files to ESL format suitable for UEFI Secure Boot:
+Convert PEM files to ESL format suitable for UEFI Secure Boot:\
 `cert-to-efi-sig-list -g $ (uuidgen) PK.pem PK.esl
 cert-to-efi-sig-list -g $ (uuidgen) KEK.pem KEK.esl
 cert-to-efi-sig-list -g $ (uuidgen) ISK.pem ISK.esl
 cert-to-efi-sig-list -g $ (uuidgen) MicWinProPCA2011_2011-10-19.pem MicWinProPCA2011_2011-10-19.esl
 cert-to-efi-sig-list -g $ (uuidgen) MicCorUEFCA2011_2011-06-27.pem MicCorUEFCA2011_2011-06-27.esl`
 
-Create the database including the signed Microsoft certificates:
+Create the database including the signed Microsoft certificates:\
 `cat ISK.esl MicWinProPCA2011_2011-10-19.esl MicCorUEFCA2011_2011-06-27.esl> db.esl`
 
 Digitally sign ESL files:
-(PK signs with herself)
+(PK signs with herself)\
 `sign-efi-sig-list -k PK.key -c PK.pem PK PK.esl PK.auth
 Timestamp is 2021-11-2 00:05:40
 Authentication Payload size 887
 Signature of size 1221
 Signature at: 40`
-(KEK is signed with PK)
+(KEK is signed with PK)\
 `sign-efi-sig-list -k PK.key -c PK.pem KEK KEK.esl KEK.auth
 Timestamp is 2021-11-2 00:05:47
 Authentication Payload size 891
 Signature of size 1221
 Signature at: 40`
-(the database is signed with KEK).
+(the database is signed with KEK).\
 `sign-efi-sig-list -k KEK.key -c KEK.pem db db.esl db.auth
 Timestamp is 2021-11-2 00:05:52
 Authentication Payload size 4042
@@ -115,20 +115,20 @@ The .auth files (PK.auth, kek.auth and db.auth) will be used to integrate our si
 
 Files with .efi extension must be signed: OpenCore.efi, BOOTx64.efi, Drivers and Tools.
 
-Create working directory:
+Create working directory:\
 `mkdir oc`
 
-Copy ISK.key and ISK.pem to the oc folder:
+Copy ISK.key and ISK.pem to the oc folder:\
 `cp ISK.key ISK.pem oc
 cd oc`
 
-User *profzei* has a script *sign_opencore.sh* that automates this process: create required folders, download and unzip OpenCore current version (0.7.5 at the time of writing), download HFSPlus.efi, check ISK keys, digitally sign files and copy them to the Signed folder. The script must be in the oc folder next to ISK.key and ISK.pem. It is slightly modified by me to suit my needs. You can also modify it to your liking. Check the drivers and tools that you use and modify the script in the signing files part to include those that are not currently included.
+User *profzei* has a script *sign_opencore.sh* that automates this process: create required folders, download and unzip OpenCore current version (0.7.5 at the time of writing), download HFSPlus.efi, check ISK keys, digitally sign files and copy them to the Signed folder. The script must be in the oc folder next to ISK.key and ISK.pem. It is slightly modified by me to suit my needs. You can also modify it to your liking. Check the drivers and tools that you use and modify the script in the signing files part to include those that are not currently included.\
 Copy this [text](https://gist.github.com/perez987/1707f26b256a2bc849b4fc272de20280) into a text editor and save it with the name *sign_opencore.sh* (you can do it on Windows).
 
-Copy it into the oc folder:
+Copy it into the oc folder:\
 `cp /mnt/c/Users/me/Downloads/sign_opencore.sh /home/me/efikeys/oc`
 
-This script needs 2 parameters to be run: OpenCore download site and version number. For example, with version 0.7.5 (current):
+This script needs 2 parameters to be run: OpenCore download site and version number. For example, with version 0.7.5 (current):\
 `sh ./sign_opencore.sh https://github.com/acidanthera/OpenCorePkg/releases/download/0.7.5/OpenCore-0.7.5-RELEASE.zip 0.7.5`
 
 At the end we will have in the Signed folder the OpenCore .efi files digitally signed with our own keys. Copy the Signed folder to a folder (outside Ubuntu) that is accessible from Windows and/or macOS to put the signed files in the OpenCore EFI folder replacing the ones with the same name.

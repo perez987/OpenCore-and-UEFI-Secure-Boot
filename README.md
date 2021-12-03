@@ -73,7 +73,7 @@ Download Microsoft certificates:
 [Microsoft UEFI driver signing CA key](http://go.microsoft.com/fwlink/?LinkId=321194)
 
 Copy Windows certificates to the working folder:
-`cp /mnt/c/Users/yo/Downloads/MicCorUEFCA2011_2011-06-27.crt/home/yo/efikeys/cp /mnt/c/Users/yo/Downloads/MicWinProPCA2011_2011-10-19.crt/home/yo/efikeys/`
+`cp /mnt/c/Users/me/Downloads/MicCorUEFCA2011_2011-06-27.crt/home/me/efikeys/cp /mnt/c/Users/me/Downloads/MicWinProPCA2011_2011-10-19.crt/home/yo/efikeys/`
 
 Digitally sign Microsoft certificates:
 `openssl x509 -in MicWinProPCA2011_2011-10-19.crt -inform DER -out MicWinProPCA2011_2011-10-19.pem -outform PEM
@@ -126,7 +126,7 @@ User *profzei* has a script *sign_opencore.sh* that automates this process: crea
 Copy this [text](https://gist.github.com/perez987/1707f26b256a2bc849b4fc272de20280) into a text editor and save it with the name *sign_opencore.sh* (you can do it on Windows).
 
 Copy it into the oc folder:
-`cp /mnt/c/Users/yo/Downloads/sign_opencore.sh /home/yo/efikeys/oc`
+`cp /mnt/c/Users/me/Downloads/sign_opencore.sh /home/me/efikeys/oc`
 
 This script needs 2 parameters to be run: OpenCore download site and version number. For example, with version 0.7.5 (current):
 `sh ./sign_opencore.sh https://github.com/acidanthera/OpenCorePkg/releases/download/0.7.5/OpenCore-0.7.5-RELEASE.zip 0.7.5`

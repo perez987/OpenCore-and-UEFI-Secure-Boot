@@ -24,8 +24,8 @@ This task can be simplified thanks to a not widely used infrastructure that exis
 
 Open PowerShell as Administrator
 Run `wsl --install` command.
-`
-PS C: / Users / miliuco> wsl --install
+
+`PS C: / Users / miliuco> wsl --install
 Installing: Virtual Machine Platform
 Virtual Machine Platform has been installed.
 Installing: Windows Subsystem for Linux

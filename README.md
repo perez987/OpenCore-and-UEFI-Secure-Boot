@@ -24,8 +24,8 @@ This task can be simplified thanks to a not widely used infrastructure that exis
 
 Open PowerShell as Administrator\
 Run `wsl --install` command:\
-`PS C: /Users/me> wsl --install\
-Installing: Virtual Machine Platform`\
+`PS C: /Users/me> wsl --install`\
+`Installing: Virtual Machine Platform`\
 `Virtual Machine Platform has been installed.`\
 `Installing: Windows Subsystem for Linux`\
 `Windows Subsystem for Linux has been installed.`\

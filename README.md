@@ -20,7 +20,7 @@ This task can be simplified thanks to a not widely used infrastructure that exis
 
 **Note**: in the issue number 1796 of the OpenCore bug tracker "Support UEFI SecureBoot within OpenCore" vit9696 comments about developing a simpler method of doing this, probably from within OpenCore and macOS and without the need to integrate the keys into the UEFI signature, but it is something that does not have high priority so we have to wait for updates.
 
-**2. Installing WSL from command line**
+## 2. Installing WSL from command line
 
 Open PowerShell as Administrator >> run `wsl --install` command:
 
@@ -43,7 +43,7 @@ WSL boots from the Ubuntu icon in the application menu or by typing ubuntu in th
 Windows disks are accessible in the path */mnt/c*, */mnt/d* and so on. The Linux system is accessible from Windows Explorer >> Linux. It is not recommended to modify Ubuntu elements from Windows Explorer, it is preferable to do it from within WSL.\
 If at any time you forget the Linux password >> open PowerShell >> `wsl -u root` (open Ubuntu in the Windows user's directory) >> `passwd <user>` >> request a new password >> exit.
 
-**3. Installing the tools**
+## 3. Installing the tools
 
 In the Ubuntu Terminal window:
 
@@ -61,7 +61,7 @@ Openssl tool is also required but it is already installed on Ubuntu.
 If we want to see the utilities already installed in Ubuntu we can use the command
 `sudo apt list --installed`.
 
-**_Creating the keys to shove into the firmware and sign OpenCore_**
+## 4. Creating the keys to shove into the firmware and sign OpenCore
 
 Create a working dir:\
 `mkdir efykeys
@@ -124,7 +124,7 @@ Signature at: 40`
 
 The .auth files (PK.auth, kek.auth and db.auth) will be used to integrate our signatures into the firmware. Copy these files to a folder outside Ubuntu so that they are accessible from Windows. The ISK.key and ISK.pem files will be used to sign OpenCore files.
 
-**4. Signing OpenCore files**
+## 5. Signing OpenCore files
 
 Files with .efi extension must be signed: OpenCore.efi, BOOTx64.efi, Drivers and Tools.
 
@@ -146,7 +146,7 @@ This script needs 2 parameters to be run: OpenCore download site and version num
 
 At the end we will have in the Signed folder the OpenCore .efi files digitally signed with our own keys. Copy the Signed folder to a folder (outside Ubuntu) that is accessible from Windows and/or macOS to put the signed files in the OpenCore EFI folder replacing the ones with the same name.
 
-**5. Include signatures into the firmware**
+## 6. Include signatures into the firmware
 
 Final step is to shove the signature files into the firmware, replacing the existing variables:
 
@@ -156,7 +156,7 @@ Final step is to shove the signature files into the firmware, replacing the exis
 
 This can be done in 2 ways: from the configuration menu of the motherboard or with the specialized tool KeyTool.
 
-BIOS
+### BIOS
 
 In the Secure Boot section there are usually options to restore the default factory keys or to edit variables separately. On my motherboard (Z390 Aorus Elite) this menu is in Boot >> Secure Boot tab >> Key Management.
 
@@ -176,7 +176,7 @@ In the case of Authorized Signatures, after adding db.auth I see 4 authorized si
 
 ![DB Details](img/DB-details.jpeg?raw=true)
 
-KeyTool
+### KeyTool
 
 KeyTool is included in the efitools Linux package, you can find the utility in `/usr/share/efitools/efi/KeyTool.efi`.\
 Copy KeyTool.efi with the name bootx64.efi into the EFI folder of an USB device (formatted as FAT32 and MBR). Along with bootx64.efi (KeyTool.efi), the EFI folder on the USB device must also include the files db.auth, kek.auth and pk.auth.\
@@ -194,6 +194,6 @@ Select the variable that you are going to modify in this order: The Allowed Sign
 
 Repeat the same for The Key Exchange Keys Database (kek) and The Platform Key (pk).
 
-**6. Ending**
+## 7. Ending
 
 After introducing db.auth, kek.auth and pk.auth in the firmware we can boot signed OpenCore and macOS with UEFI Secure Boot enabled.

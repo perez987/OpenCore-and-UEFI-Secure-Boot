@@ -115,21 +115,21 @@ Create the database including the signed Microsoft certificates:
 
 Digitally sign ESL files:
 
-(PK signs with herself)\
+- PK signs with herself
 >sign-efi-sig-list -k PK.key -c PK.pem PK PK.esl PK.auth\
 Timestamp is 2021-11-2 00:05:40\
 Authentication Payload size 887\
 Signature of size 1221\
 Signature at: 40
 
-(KEK is signed with PK)\
+- KEK is signed with PK)
 >sign-efi-sig-list -k PK.key -c PK.pem KEK KEK.esl KEK.auth\
 Timestamp is 2021-11-2 00:05:47\
 Authentication Payload size 891\
 Signature of size 1221\
 Signature at: 40
 
-(the database is signed with KEK).\
+- the database is signed with KEK).
 >sign-efi-sig-list -k KEK.key -c KEK.pem db db.esl db.auth\
 Timestamp is 2021-11-2 00:05:52\
 Authentication Payload size 4042\
@@ -152,7 +152,7 @@ Copy ISK.key and ISK.pem to the oc folder:
 cd oc
 
 User *profzei* has a script *sign_opencore.sh* that automates this process: create required folders, download and unzip OpenCore current version (0.7.5 at the time of writing), download HFSPlus.efi, check ISK keys, digitally sign files and copy them to the Signed folder. The script must be in the oc folder next to ISK.key and ISK.pem. It is slightly modified by me to suit my needs. You can also modify it to your liking. Check the drivers and tools that you use and modify the script in the signing files part to include those that are not currently included.\
-Copy this [text](https://gist.github.com/perez987/1707f26b256a2bc849b4fc272de20280) into a text editor and save it with the name *sign_opencore.sh* (you can do it on Windows).
+Copy this text into a text editor and save it with the name *sign_opencore.sh* (you can do it on Windows).
 
 ```bash
 #!/bin/bash

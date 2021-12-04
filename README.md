@@ -72,15 +72,15 @@ cd efykeys
 
 Create PK (Platform Key):
 
->openssl req -new -x509 -newkey rsa: 2048 -sha256 -days 3650 -nodes -subj "/ CN = NAME PK Platform Key /" -keyout PK.key -out PK.pem
+>openssl req -new -x509 -newkey rsa: 2048 -sha256 -days 3650 -nodes -subj "/CN=NAME PK Platform Key/" -keyout PK.key -out PK.pem
 
 Create KEK (Key Exchange Key):
 
->openssl req -new -x509 -newkey rsa: 2048 -sha256 -days 3650 -nodes -subj "/ CN = NAME KEK Exchange Key /" -keyout KEK.key -out KEK.pem
+>openssl req -new -x509 -newkey rsa: 2048 -sha256 -days 3650 -nodes -subj "/CN=NAME KEK Exchange Key/" -keyout KEK.key -out KEK.pem
 
 Create ISK (Initial Supplier Key):
 
->openssl req -new -x509 -newkey rsa: 2048 -sha256 -days 3650 -nodes -subj "/ CN = NAME ISK Image Signing Key /" -keyout ISK.key -out ISK.pem
+>openssl req -new -x509 -newkey rsa: 2048 -sha256 -days 3650 -nodes -subj "/CN=NAME ISK Image Signing Key/" -keyout ISK.key -out ISK.pem
 
 Note: replace NAME with something characteristic that helps you to recognise the keys when you view them from the UEFI menu, for example KEYS2021.
 

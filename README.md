@@ -24,7 +24,8 @@ This task can be simplified thanks to a not widely used infrastructure that exis
 
 Open PowerShell as Administrator >> run `wsl --install` command:
 
-> PS C: / Users / miliuco> wsl --install\
+```
+PS C: / Users / miliuco> wsl --install\
 Installing: Virtual Machine Platform\
 Virtual Machine Platform has been installed.\
 Installing: Windows Subsystem for Linux\
@@ -37,6 +38,7 @@ Installing: GUI application technical support\
 GUI Application Support has been installed.\
 Downloading: Ubuntu\
 The requested operation was successful. The changes will take effect after the system reboots.
+```
 
 At the end, it requests username and password (they are not related to the ones you use in Windows). This will be the default account and will automatically log into the home folder. It is an administrator account and can run commands with sudo.\
 WSL boots from the Ubuntu icon in the application menu or by typing ubuntu in the command line window. A Bash Terminal window is shown with the prompt in our user folder.\
@@ -116,27 +118,17 @@ Create the database including the signed Microsoft certificates:
 Digitally sign ESL files:
 
 - PK signs with herself
->sign-efi-sig-list -k PK.key -c PK.pem PK PK.esl PK.auth\
-Timestamp is 2021-11-2 00:05:40\
-Authentication Payload size 887\
-Signature of size 1221\
-Signature at: 40
+>sign-efi-sig-list -k PK.key -c PK.pem PK PK.esl PK.auth
 
 - KEK is signed with PK
->sign-efi-sig-list -k PK.key -c PK.pem KEK KEK.esl KEK.auth\
-Timestamp is 2021-11-2 00:05:47\
-Authentication Payload size 891\
-Signature of size 1221\
-Signature at: 40
+>sign-efi-sig-list -k PK.key -c PK.pem KEK KEK.esl KEK.auth
 
 - the database is signed with KEK
->sign-efi-sig-list -k KEK.key -c KEK.pem db db.esl db.auth\
-Timestamp is 2021-11-2 00:05:52\
-Authentication Payload size 4042\
-Signature of size 1224\
-Signature at: 40
+>sign-efi-sig-list -k KEK.key -c KEK.pem db db.esl db.auth
 
-The .auth files (PK.auth, kek.auth and db.auth) will be used to integrate our signatures into the firmware. Copy these files to a folder outside Ubuntu so that they are accessible from Windows. The ISK.key and ISK.pem files will be used to sign OpenCore files.
+What to do with PK.auth, kek.auth, db.auth, ISK.key and ISK.pem?
+- .auth files (PK.auth, kek.auth and db.auth) will be used to integrate our signatures into the firmware. Copy these files to a folder outside Ubuntu so that they are accessible from Windows
+- ISK.key and ISK.pem files will be used to sign OpenCore files.
 
 ## 5. Signing OpenCore files
 
@@ -231,7 +223,7 @@ This script needs 2 parameters to be run: OpenCore download site and version num
 
 >sh ./sign_opencore.sh https://github.com/acidanthera/OpenCorePkg/releases/download/0.7.5/OpenCore-0.7.5-RELEASE.zip 0.7.5
 
-At the end we will have in the Signed folder the OpenCore .efi files digitally signed with our own keys. Copy the Signed folder to a folder (outside Ubuntu) that is accessible from Windows and/or macOS to put the signed files in the OpenCore EFI folder replacing the ones with the same name.
+At the end we will have in the Signed folder the OpenCore .efi files digitally signed with our own keys. Copy the Signed folder to a folder (outside Ubuntu) that is accessible from Windows and/or macOS to put the signed files into the OpenCore EFI folder, replacing the ones with the same name.
 
 ## 6. Include signatures into the firmware
 
@@ -241,7 +233,7 @@ Final step is to shove the signature files into the firmware, replacing the exis
 - kek.auth >> KEK (Key Exchange Keys)
 - pk.auth >> PK (Platform key).
 
-This can be done in 2 ways: from the configuration menu of the motherboard or with the specialized tool KeyTool.
+This can be done in 2 ways: configuration menu of the motherboard or specialized tool KeyTool.
 
 ### BIOS
 
@@ -283,4 +275,4 @@ Repeat the same for The Key Exchange Keys Database (kek) and The Platform Key (p
 
 ## 7. Ending
 
-After introducing db.auth, kek.auth and pk.auth in the firmware we can boot signed OpenCore and macOS with UEFI Secure Boot enabled.
+After emedding db.auth, kek.auth and pk.auth in the firmware we can boot signed OpenCore and macOS with UEFI Secure Boot enabled.

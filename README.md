@@ -122,14 +122,14 @@ Authentication Payload size 887\
 Signature of size 1221\
 Signature at: 40
 
-- KEK is signed with PK)
+- KEK is signed with PK
 >sign-efi-sig-list -k PK.key -c PK.pem KEK KEK.esl KEK.auth\
 Timestamp is 2021-11-2 00:05:47\
 Authentication Payload size 891\
 Signature of size 1221\
 Signature at: 40
 
-- the database is signed with KEK).
+- the database is signed with KEK
 >sign-efi-sig-list -k KEK.key -c KEK.pem db db.esl db.auth\
 Timestamp is 2021-11-2 00:05:52\
 Authentication Payload size 4042\

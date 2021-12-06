@@ -233,15 +233,15 @@ Final step is to shove the signature files into the firmware, replacing the exis
 - kek.auth >> KEK (Key Exchange Keys)
 - pk.auth >> PK (Platform key).
 
-This can be done in 2 ways: configuration menu of the motherboard or specialized tool KeyTool.
+This can be done in 2 ways: BIOS setting menu or specialized tool KeyTool.
 
 ### BIOS
 
-In the Secure Boot section there are usually options to restore the default factory keys or to edit variables separately. On my motherboard (Z390 Aorus Elite) this menu is in Boot >> Secure Boot tab >> Key Management.
+In the Secure Boot section there are usually options to restore default factory keys or to edit variables separately. On my motherboard (Z390 Aorus Elite) this menu is in Boot >> Secure Boot tab >> Key Management.
 
 ![Key Management](img/Key-Management.jpeg?raw=true)
 
-If you have modified the keystores before (if it is not the first time it's done) it is highly recommended, to avoid errors, restore default factory keys before adding / editing the new ones >> Restore Factory keys >> Install factory defaults >> Yes.
+If you have modified the keystores before (if it is not the first time) it is highly recommended, to avoid errors, restore default factory keys before adding / editing the new ones >> Restore Factory keys >> Install factory defaults >> Yes.
 
 ![Restory Factory Keys.jpeg](img/Restory-Factory-Keys.jpeg?raw=true)
 
@@ -275,4 +275,4 @@ Repeat the same for The Key Exchange Keys Database (kek) and The Platform Key (p
 
 ## 7. Ending
 
-After embedding db.auth, kek.auth and pk.auth in the firmware we can boot signed OpenCore and macOS with UEFI Secure Boot enabled.
+After embedding db.auth, kek.auth and pk.auth into the firmware we can boot OpenCore and macOS with UEFI Secure Boot enabled.

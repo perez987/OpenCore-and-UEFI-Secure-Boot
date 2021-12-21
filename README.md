@@ -1,7 +1,7 @@
 # OpenCore and UEFI Secure Boot with Windows Subsystem for Linux
 
 <table>
- <tr><td><b>This guide proposes the activation of UEFI Secure Boot in OpenCore from Windows 11 with Windows Subsystem for Linux, so the installation and configuration of a complete Linux system is not necessary. Some knowledge of basic Linux commands is still required, but less time and effort is required</b></tr></td>
+ <tr><td><b>This guide proposes the activation of UEFI Secure Boot in OpenCore from Windows 11 with Windows Subsystem for Linux, so the installation and configuration of a complete Linux system is not necessary. Some knowledge of basic Linux commands is still recommended, but less time and effort is required</b></tr></td>
 </table>
 
 ## 1. Preface

@@ -27,7 +27,7 @@ This task can be simplified thanks to a not widely used infrastructure that exis
 
 Open PowerShell as Administrator >> run `wsl --install` command:
 
-```
+```shell
 PS C:/Users/me> wsl --install
 Installing: Virtual Machine Platform
 Virtual Machine Platform has been installed.

@@ -108,11 +108,11 @@ openssl x509 -in MicCorUEFCA2011_2011-06-27.crt -inform DER -out MicCorUEFCA2011
 
 Convert PEM files to ESL format suitable for UEFI Secure Boot:
 
->cert-to-efi-sig-list -g $ (uuidgen) PK.pem PK.esl\
-cert-to-efi-sig-list -g $ (uuidgen) KEK.pem KEK.esl\
-cert-to-efi-sig-list -g $ (uuidgen) ISK.pem ISK.esl\
-cert-to-efi-sig-list -g $ (uuidgen) MicWinProPCA2011_2011-10-19.pem MicWinProPCA2011_2011-10-19.esl\
-cert-to-efi-sig-list -g $ (uuidgen) MicCorUEFCA2011_2011-06-27.pem MicCorUEFCA2011_2011-06-27.esl
+>cert-to-efi-sig-list -g $(uuidgen) PK.pem PK.esl\
+cert-to-efi-sig-list -g $(uuidgen) KEK.pem KEK.esl\
+cert-to-efi-sig-list -g $(uuidgen) ISK.pem ISK.esl\
+cert-to-efi-sig-list -g $(uuidgen) MicWinProPCA2011_2011-10-19.pem MicWinProPCA2011_2011-10-19.esl\
+cert-to-efi-sig-list -g $(uuidgen) MicCorUEFCA2011_2011-06-27.pem MicCorUEFCA2011_2011-06-27.esl
 
 Create the database including the signed Microsoft certificates:
 

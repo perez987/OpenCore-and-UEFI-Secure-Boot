@@ -70,26 +70,36 @@ If we want to see the utilities already installed in Ubuntu we can use the comma
 
 Create a working dir:
 
->mkdir efykeys\
-cd efykeys
+```shell
+mkdir ~/efikeys
+cd efikeys
+```
 
 Create PK (Platform Key):
 
->openssl req -new -x509 -newkey rsa: 2048 -sha256 -days 3650 -nodes -subj "/CN=NAME PK Platform Key/" -keyout PK.key -out PK.pem
+```shell
+openssl req -new -x509 -newkey rsa:2048 -sha256 -days 3650 -nodes -subj "/CN=NAME PK Platform Key/" -keyout PK.key -out PK.pem
+```
 
 Create KEK (Key Exchange Key):
 
->openssl req -new -x509 -newkey rsa: 2048 -sha256 -days 3650 -nodes -subj "/CN=NAME KEK Exchange Key/" -keyout KEK.key -out KEK.pem
+```shell
+openssl req -new -x509 -newkey rsa:2048 -sha256 -days 3650 -nodes -subj "/CN=NAME KEK Exchange Key/" -keyout KEK.key -out KEK.pem
+```
 
 Create ISK (Initial Supplier Key):
 
->openssl req -new -x509 -newkey rsa: 2048 -sha256 -days 3650 -nodes -subj "/CN=NAME ISK Image Signing Key/" -keyout ISK.key -out ISK.pem
+```shell
+openssl req -new -x509 -newkey rsa:2048 -sha256 -days 3650 -nodes -subj "/CN=NAME ISK Image Signing Key/" -keyout ISK.key -out ISK.pem
+```
 
 Note: replace NAME with something characteristic that helps you to recognise the keys when you view them from the UEFI menu, for example KEYS2021.
 
 Permissions for key files:
 
->chmod 0600 * .key
+```shell
+chmod 0600 *.key
+```
 
 Download Microsoft certificates:
 
@@ -98,36 +108,46 @@ Download Microsoft certificates:
 
 Copy Windows certificates to the working folder:
 
->cp /mnt/c/Users/me/Downloads/MicCorUEFCA2011_2011-06-27.crt /home/me/efikeys/\
-cp /mnt/c/Users/me/Downloads/MicWinProPCA2011_2011-10-19.crt /home/me/efikeys/
+```shell
+cp /mnt/c/Users/Rai/Downloads/MicCorUEFCA2011_2011-06-27.crt ~/efikeys/\
+cp /mnt/c/Users/Rai/Downloads/MicWinProPCA2011_2011-10-19.crt ~/efikeys/
+```
 
 Digitally sign Microsoft certificates:
 
->openssl x509 -in MicWinProPCA2011_2011-10-19.crt -inform DER -out MicWinProPCA2011_2011-10-19.pem -outform PEM\
+```shell
+openssl x509 -in MicWinProPCA2011_2011-10-19.crt -inform DER -out MicWinProPCA2011_2011-10-19.pem -outform PEM\
 openssl x509 -in MicCorUEFCA2011_2011-06-27.crt -inform DER -out MicCorUEFCA2011_2011-06-27.pem -outform PEM
+```
 
 Convert PEM files to ESL format suitable for UEFI Secure Boot:
 
->cert-to-efi-sig-list -g $(uuidgen) PK.pem PK.esl\
+```shell
+cert-to-efi-sig-list -g $(uuidgen) PK.pem PK.esl\
 cert-to-efi-sig-list -g $(uuidgen) KEK.pem KEK.esl\
 cert-to-efi-sig-list -g $(uuidgen) ISK.pem ISK.esl\
 cert-to-efi-sig-list -g $(uuidgen) MicWinProPCA2011_2011-10-19.pem MicWinProPCA2011_2011-10-19.esl\
 cert-to-efi-sig-list -g $(uuidgen) MicCorUEFCA2011_2011-06-27.pem MicCorUEFCA2011_2011-06-27.esl
+```
 
 Create the database including the signed Microsoft certificates:
 
->cat ISK.esl MicWinProPCA2011_2011-10-19.esl MicCorUEFCA2011_2011-06-27.esl > db.esl
+```shell
+cat ISK.esl MicWinProPCA2011_2011-10-19.esl MicCorUEFCA2011_2011-06-27.esl > db.esl
+```
 
 Digitally sign ESL files:
 
-- PK signs with herself
->sign-efi-sig-list -k PK.key -c PK.pem PK PK.esl PK.auth
+```shell
+# PK signs with herself
+sign-efi-sig-list -k PK.key -c PK.pem PK PK.esl PK.auth
 
-- KEK is signed with PK
->sign-efi-sig-list -k PK.key -c PK.pem KEK KEK.esl KEK.auth
+# KEK is signed with PK
+sign-efi-sig-list -k PK.key -c PK.pem KEK KEK.esl KEK.auth
 
-- the database is signed with KEK
->sign-efi-sig-list -k KEK.key -c KEK.pem db db.esl db.auth
+# the database is signed with KEK
+sign-efi-sig-list -k KEK.key -c KEK.pem db db.esl db.auth
+```
 
 What to do with PK.auth, kek.auth, db.auth, ISK.key and ISK.pem?
 - .auth files (PK.auth, kek.auth and db.auth) will be used to integrate our signatures into the firmware. Copy these files to a folder outside Ubuntu so that they are accessible from Windows
@@ -139,12 +159,16 @@ Files with .efi extension must be signed: OpenCore.efi, BOOTx64.efi, Drivers and
 
 Create working directory:
 
->mkdir oc
+```
+mkdir oc
+```
 
 Copy ISK.key and ISK.pem to the oc folder:
 
->cp ISK.key ISK.pem oc\
+```
+cp ISK.key ISK.pem oc\
 cd oc
+```
 
 User *profzei* has a script *sign_opencore.sh* that automates this process: create required folders, download and unzip OpenCore current version (0.7.5 at the time of writing), download HFSPlus.efi, check ISK keys, digitally sign files and copy them to the Signed folder. The script must be in the oc folder next to ISK.key and ISK.pem. It is slightly modified by me to suit my needs. You can also modify it to your liking. Check the drivers and tools that you use and modify the script in the signing files part to include those that are not currently included.\
 Copy this text into a text editor and save it with the name *sign_opencore.sh* (you can do it on Windows).
@@ -220,11 +244,15 @@ echo "Cleaned."
 
 Copy it into the oc folder:
 
->cp /mnt/c/Users/me/Downloads/sign_opencore.sh /home/me/efikeys/oc
+```shell
+cp /mnt/c/Users/Rai/Downloads/sign_opencore.sh /home/rai/efikeys/oc
+```
 
 This script needs 2 parameters to be run: OpenCore download site and version number. For example, with version 0.7.5 (current):
 
->sh ./sign_opencore.sh https://github.com/acidanthera/OpenCorePkg/releases/download/0.7.5/OpenCore-0.7.5-RELEASE.zip 0.7.5
+```
+sh ./sign_opencore.sh https://github.com/acidanthera/OpenCorePkg/releases/download/0.7.5/OpenCore-0.7.5-RELEASE.zip 0.7.5
+```
 
 At the end we will have in the Signed folder the OpenCore .efi files digitally signed with our own keys. Copy the Signed folder to a folder (outside Ubuntu) that is accessible from Windows and/or macOS to put the signed files into the OpenCore EFI folder, replacing the ones with the same name.
 

@@ -1,5 +1,3 @@
-Thanks @rbutera and @echoechoechoechoechoecho PRs
-
 # OpenCore and UEFI Secure Boot with Windows Subsystem for Linux
 
 <table>

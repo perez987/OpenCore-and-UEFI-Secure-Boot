@@ -109,24 +109,24 @@ Download Microsoft certificates:
 Copy Windows certificates to the working folder:
 
 ```shell
-cp /mnt/c/Users/me/Downloads/MicCorUEFCA2011_2011-06-27.crt ~/efikeys/\
+cp /mnt/c/Users/me/Downloads/MicCorUEFCA2011_2011-06-27.crt ~/efikeys/
 cp /mnt/c/Users/me/Downloads/MicWinProPCA2011_2011-10-19.crt ~/efikeys/
 ```
 
 Digitally sign Microsoft certificates:
 
 ```shell
-openssl x509 -in MicWinProPCA2011_2011-10-19.crt -inform DER -out MicWinProPCA2011_2011-10-19.pem -outform PEM\
+openssl x509 -in MicWinProPCA2011_2011-10-19.crt -inform DER -out MicWinProPCA2011_2011-10-19.pem -outform PEM
 openssl x509 -in MicCorUEFCA2011_2011-06-27.crt -inform DER -out MicCorUEFCA2011_2011-06-27.pem -outform PEM
 ```
 
 Convert PEM files to ESL format suitable for UEFI Secure Boot:
 
 ```shell
-cert-to-efi-sig-list -g $(uuidgen) PK.pem PK.esl\
-cert-to-efi-sig-list -g $(uuidgen) KEK.pem KEK.esl\
-cert-to-efi-sig-list -g $(uuidgen) ISK.pem ISK.esl\
-cert-to-efi-sig-list -g $(uuidgen) MicWinProPCA2011_2011-10-19.pem MicWinProPCA2011_2011-10-19.esl\
+cert-to-efi-sig-list -g $(uuidgen) PK.pem PK.esl
+cert-to-efi-sig-list -g $(uuidgen) KEK.pem KEK.esl
+cert-to-efi-sig-list -g $(uuidgen) ISK.pem ISK.esl
+cert-to-efi-sig-list -g $(uuidgen) MicWinProPCA2011_2011-10-19.pem MicWinProPCA2011_2011-10-19.esl
 cert-to-efi-sig-list -g $(uuidgen) MicCorUEFCA2011_2011-06-27.pem MicCorUEFCA2011_2011-06-27.esl
 ```
 
@@ -166,11 +166,12 @@ mkdir oc
 Copy ISK.key and ISK.pem to the oc folder:
 
 ```
-cp ISK.key ISK.pem oc\
+cp ISK.key ISK.pem oc
 cd oc
 ```
 
-User *profzei* has a script *sign_opencore.sh* that automates this process: create required folders, download and unzip OpenCore current version (0.8.4 at the time of writing), download HFSPlus.efi, check ISK keys, digitally sign files and copy them to the Signed folder. The script must be in the oc folder next to ISK.key and ISK.pem. It is slightly modified by me to suit my needs. You can also modify it to your liking. Check the drivers and tools that you use and modify the script in the signing files part to include those that are not currently included.\
+User *profzei* has a script *sign_opencore.sh* that automates this process: create required folders, download and unzip OpenCore current version (0.8.4 at the time of writing), download HFSPlus.efi, check ISK keys, digitally sign files and copy them to the Signed folder. The script must be in the oc folder next to ISK.key and ISK.pem. It is slightly modified by me to suit my needs. You can also modify it to your liking. Check the drivers and tools that you use and modify the script in the signing files part to include those that are not currently included.
+
 Copy this text into a text editor and save it with the name *sign_opencore.sh* (you can do it on Windows).
 
 ```bash

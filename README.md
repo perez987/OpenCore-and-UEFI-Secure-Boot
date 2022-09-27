@@ -1,3 +1,5 @@
+Thanks @rbutera and @echoechoechoechoechoecho PRs
+
 # OpenCore and UEFI Secure Boot with Windows Subsystem for Linux
 
 <table>
@@ -232,7 +234,7 @@ sh ./sign_opencore.sh https://github.com/acidanthera/OpenCorePkg/releases/downlo
 At the end we will have in the Signed folder the OpenCore .efi files digitally signed with our own keys. Copy the Signed folder to a folder (outside Ubuntu) that is accessible from Windows and/or macOS to put the signed files into the OpenCore EFI folder, replacing the ones with the same name.
 
 ```
-cp -r /home/me/efikeys/ /mnt/c/Users/yo/Downloads/
+cp -r /home/me/efikeys/ /mnt/c/Users/me/Downloads/
 ```
 
 ## 6. Include signatures into the firmware

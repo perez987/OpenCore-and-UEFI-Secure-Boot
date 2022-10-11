@@ -4,7 +4,7 @@
  <tr><td><b>This guide proposes the activation of UEFI Secure Boot in OpenCore from Windows 11 with Windows Subsystem for Linux, so the installation and configuration of a complete Linux system is not necessary. Some knowledge of basic Linux commands is still recommended, but less time and effort is required</b></tr></td>
 </table>
 
-## 1. Preface
+## Preface
  
 Motherboard UEFI firmware has Secure Boot capability so that only digitally signed boot loader files with keys that are embedded in the firmware are allowed. With UEFI Secure Boot enabled:
 
@@ -21,7 +21,13 @@ This text is based on the guides by:
 *sakaki* and *Ubuntu* discuss how to boot Linux with UEFI Secure Boot enabled but *khronokernel* and *profzei* refer specifically to OpenCore and macOS. The 4 guides agree on the need to do it from a Linux system since the required tools do not exist for macOS. The Linux system required to sign OpenCore files can be a significant inconvenience because of the work involved in installing and configuring it (either on a separate disk or in a virtual machine). Once in Linux, everything is done from Terminal so much of the installed system is not really necessary.\
 This task can be simplified thanks to a not widely used infrastructure that exists in Windows 10 (build 18917 or later) and Windows 11: Windows Subsystem for Linux (WSL). We can boot a genuine Ubuntu image provided by Canonical. This makes possible to run commands natively in a Bash terminal within a Windows environment that behaves like Linux.
 
-## 2. Installing WSL from command line
+## Installing WSL from Microsoft Store
+
+You can install WSL with Ubuntu from the Microsoft Store with the advantage that it is installed for all users, whereas from PowerShell it is installed only for the current user and requires some tasks to be executed as administrator.
+
+*Note*: In the Microsoft Store there are other Linux distributions available to install with WSL, it is even possible to have more than one and they can be managed with the WSL Manager app.
+
+## Installing WSL from command line
 
 Open PowerShell as Administrator >> run `wsl --install` command:
 
@@ -40,15 +46,16 @@ GUI Application Support has been installed.
 Downloading: Ubuntu
 The requested operation was successful. The changes will take effect after the system reboots.
 ```
+## First use of WSL
 
-At the end, it requests username and password (they are not related to the ones you use in Windows). This will be the default account and will automatically log into the home folder. It is an administrator account and can run commands with sudo.\
-WSL boots from the Ubuntu icon in the application menu or by typing ubuntu in the command line window. A Bash Terminal window is shown with the prompt in our user folder.\
+It requests username and password (they are not related to the ones you use in Windows). This will be the default account and will automatically log into the home folder. It is an administrator account and can run commands with sudo.
+
+WSL boots from the Ubuntu icon in the application menu or by typing ubuntu in the command line window. A Bash Terminal window is shown with the prompt in our user folder.
+
 Windows disks are accessible in the path */mnt/c*, */mnt/d* and so on. The Linux system is accessible from Windows Explorer >> Linux. It is not recommended to modify Ubuntu elements from Windows Explorer, it is preferable to do it from within WSL.\
 If at any time you forget the Linux password >> open PowerShell >> `wsl -u root` (open Ubuntu in the Windows user's directory) >> `passwd <user>` >> request a new password >> exit.
 
-*Note*: you can install Ubuntu from Microsoft Store to get a fully functional WSL without the need of PowerShell commands.
-
-## 3. Installing the tools
+## Installing the tools
 
 In the Ubuntu Terminal window:
 
@@ -66,7 +73,7 @@ Openssl tool is also required but it is already installed on Ubuntu.
 If we want to see the utilities already installed in Ubuntu we can use the command
 `sudo apt list --installed`.
 
-## 4. Creating the keys to shove into the firmware and sign OpenCore
+## Creating the keys to shove into the firmware and sign OpenCore
 
 Create a working dir:
 
@@ -153,7 +160,7 @@ What to do with PK.auth, kek.auth, db.auth, ISK.key and ISK.pem?
 - .auth files (PK.auth, kek.auth and db.auth) will be used to integrate our signatures into the firmware. Copy these files to a folder outside Ubuntu so that they are accessible from Windows
 - ISK.key and ISK.pem files will be used to sign OpenCore files.
 
-## 5. Signing OpenCore files
+## Signing OpenCore files
 
 Files with .efi extension must be signed: OpenCore.efi, BOOTx64.efi, Drivers and Tools.
 
@@ -236,7 +243,7 @@ At the end we will have in the Signed folder the OpenCore .efi files digitally s
 cp -r /home/me/efikeys/ /mnt/c/Users/me/Downloads/
 ```
 
-## 6. Include signatures into the firmware
+## Include signatures into the firmware
 
 Final step is to shove the signature files into the firmware, replacing the existing variables:
 
@@ -284,6 +291,6 @@ Select the variable that you are going to modify in this order: The Allowed Sign
 
 Repeat the same for The Key Exchange Keys Database (kek) and The Platform Key (pk).
 
-## 7. Ending
+## Ending
 
 After embedding db.auth, kek.auth and pk.auth into the firmware we can boot OpenCore and macOS with UEFI Secure Boot enabled.

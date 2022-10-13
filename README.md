@@ -295,7 +295,7 @@ Repeat the same for The Key Exchange Keys Database (kek) and The Platform Key (p
 
 After embedding db.auth, kek.auth and pk.auth into the firmware we can boot OpenCore and macOS with UEFI Secure Boot enabled.
 
-### OpenCore Vault + UEFI Secure Boot
+## OpenCore Vault + UEFI Secure Boot
 
 There is a way to have UEFI Secure Boot and OpenCore vault at the same time, it's in the OpenCore Configuration.pdf file although the instructions are short and confusing in my opinion. It is a heavy task but at least it is possible to carry it out.
 

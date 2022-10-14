@@ -311,4 +311,4 @@ This requires moving from macOS to Windows and viceversa a few times. In order n
 
 It is a tedious task. The most boring part is copying files between macOS and Ubuntu. UTM in theory has the option to define a shared folder to exchange files but I have not been able to make it work. I have used Wetransfer in Mac and Linux browsers to exchange files between both systems. The shared clipboard between Mac and Linux does work so at least text can be exchanged.
 
-![Ubuntu on UTM](img/utm-ubuntu.png?raw=true)
+![Ubuntu on UTM](img/Ubuntu-utm.png?raw=true)

@@ -258,7 +258,7 @@ Now you can edit the keys. Select the variable that you are going to modify in t
 
 ![DB Options](img/DB-options.jpeg?raw=true)
 
-To replace one variable with another: select Update >> search in the USB device >> locate and select db.auth >> this database of allowed signatures replaces the current one. Likewise with Append if you want to add it to the existing one instead of replacing it. You can use Append with db.auth and kek.auth but pk.auth only allows replacement.\
+To replace one variable with another: select Update >> search in the USB device >> locate and select db.auth >> this allowed signatures database replaces the current one. Likewise with Append if you want to add it to the existing one instead of replacing it. You can use Append with db.auth and kek.auth but pk.auth only allows replacement.\
 To see the details, select Details >> variable's details are displayed.\
 In the case of Authorized Signatures, after adding db.auth I see 4 authorized signatures: the one I created (ISK Image Signing Key), the two from Microsoft to be able to boot Windows with UEFI Secure Boot enabled and the one from Canonical (extracted from the Ubuntu shimx64.efi file with the shim-to-cert.tool tool included in OpenCore) to also be able to boot Ubuntu (in a separate disk, not in WSL) with UEFI Secure Boot.
 

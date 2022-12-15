@@ -209,6 +209,7 @@ fi
 
 # Sign drivers by recursively looking for the .efi files in ./Downloaded directory
 # Don't sign files that start with the dot, as this is metadata files
+# Andrew Blitss's contribution
 find ./Downloaded/X64/EFI/**/* -type f -name "*.efi" ! -name '.*' | cut -c 3- | xargs -I{} bash -c 'sbsign --key ISK.key --cert ISK.pem --output $(mkdir -p $(dirname "./Signed/{}") | echo "./Signed/{}") ./{}'
 
 # Clean

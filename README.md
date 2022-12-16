@@ -223,7 +223,70 @@ This script needs 2 parameters to be run: OpenCore download site and version num
 sh ./sign_opencore.sh https://github.com/acidanthera/OpenCorePkg/releases/download/0.8.7/OpenCore-0.8.7-RELEASE.zip 0.8.7
 ```
 
-At the end we will have in the Signed/Downloaded folder the .efi files digitally signed with our own keys. Copy the Signed folder to a folder (outside Ubuntu) that is accessible from Windows and/or macOS to put the signed files into the OpenCore EFI folder, replacing the ones with the same name.
+At the end we have in the Signed/Downloaded folder the .efi files digitally signed with our own keys.
+
+```bash
+/Users/yo/Desktop/oc2/Signed > tree -A
+.
+└── Downloaded
+    └── X64
+        └── EFI
+            ├── BOOT
+            │   └── BOOTx64.efi
+            └── OC
+                ├── Drivers
+                │   ├── ArpDxe.efi
+                │   ├── AudioDxe.efi
+                │   ├── BiosVideo.efi
+                │   ├── CrScreenshotDxe.efi
+                │   ├── Dhcp4Dxe.efi
+                │   ├── DnsDxe.efi
+                │   ├── DpcDxe.efi
+                │   ├── Ext4Dxe.efi
+                │   ├── HiiDatabase.efi
+                │   ├── HttpBootDxe.efi
+                │   ├── HttpDxe.efi
+                │   ├── HttpUtilitiesDxe.efi
+                │   ├── Ip4Dxe.efi
+                │   ├── MnpDxe.efi
+                │   ├── NvmExpressDxe.efi
+                │   ├── OpenCanopy.efi
+                │   ├── OpenHfsPlus.efi
+                │   ├── OpenLinuxBoot.efi
+                │   ├── OpenNtfsDxe.efi
+                │   ├── OpenPartitionDxe.efi
+                │   ├── OpenRuntime.efi
+                │   ├── OpenUsbKbDxe.efi
+                │   ├── OpenVariableRuntimeDxe.efi
+                │   ├── Ps2KeyboardDxe.efi
+                │   ├── Ps2MouseDxe.efi
+                │   ├── ResetNvramEntry.efi
+                │   ├── SnpDxe.efi
+                │   ├── TcpDxe.efi
+                │   ├── ToggleSipEntry.efi
+                │   ├── Udp4Dxe.efi
+                │   ├── UsbMouseDxe.efi
+                │   └── XhciDxe.efi
+                ├── OpenCore.efi
+                └── Tools
+                    ├── BootKicker.efi
+                    ├── CleanNvram.efi
+                    ├── ControlMsrE2.efi
+                    ├── CsrUtil.efi
+                    ├── ChipTune.efi
+                    ├── GopStop.efi
+                    ├── KeyTester.efi
+                    ├── MmapDump.efi
+                    ├── OpenControl.efi
+                    ├── OpenShell.efi
+                    ├── ResetSystem.efi
+                    ├── RtcRw.efi
+                    └── TpmInfo.efi
+
+7 directories, 47 files
+```
+
+Copy the Signed/Downloaded folder to a place outside Ubuntu that is accessible from Windows and/or macOS to put the signed files into the OpenCore EFI folder, replacing the ones with the same name.
 
 ## Include signatures into the firmware
 

@@ -207,10 +207,20 @@ if [ -f "./ISK.pem" ]; then
     echo "ISK.pem was decrypted successfully"
 fi
 
+# Revert to previous code for signing
+# Sign drivers
+sbsign --key ISK.key --cert ISK.pem --output ./Signed/BOOTx64.efi ./Downloaded/X64/EFI/BOOT/BOOTx64.efi
+sbsign --key ISK.key --cert ISK.pem --output ./Signed/OpenCore.efi ./Downloaded/X64/EFI/OC/OpenCore.efi
+sbsign --key ISK.key --cert ISK.pem --output ./Signed/Drivers/OpenRuntime.efi ./Downloaded/X64/EFI/OC/Drivers/OpenRuntime.efi
+sbsign --key ISK.key --cert ISK.pem --output ./Signed/Drivers/OpenCanopy.efi ./Downloaded/X64/EFI/OC/Drivers/OpenCanopy.efi
+sbsign --key ISK.key --cert ISK.pem --output ./Signed/Drivers/AudioDxe.efi ./Downloaded/X64/EFI/OC/Drivers/AudioDxe.efi
+sbsign --key ISK.key --cert ISK.pem --output ./Signed/Drivers/HfsPlus.efi ./Downloaded/HfsPlus.efi
+sbsign --key ISK.key --cert ISK.pem --output ./Signed/Tools/OpenShell.efi ./Downloaded/X64/EFI/OC/Tools/OpenShell.efi
+
 # Sign drivers by recursively looking for the .efi files in ./Downloaded directory
 # Don't sign files that start with the dot, as this is metadata files
 # Andrew Blitss's contribution
-find ./Downloaded/X64/EFI/**/* -type f -name "*.efi" ! -name '.*' | cut -c 3- | xargs -I{} bash -c 'sbsign --key ISK.key --cert ISK.pem --output $(mkdir -p $(dirname "./Signed/{}") | echo "./Signed/{}") ./{}'
+# find ./Downloaded/X64/EFI/**/* -type f -name "*.efi" ! -name '.*' | cut -c 3- | xargs -I{} bash -c 'sbsign --key ISK.key --cert ISK.pem --output $(mkdir -p $(dirname "./Signed/{}") | echo "./Signed/{}") ./{}'
 
 # Clean
 rm -rf Downloaded

@@ -177,9 +177,9 @@ cp ISK.key ISK.pem oc
 cd oc
 ```
 
-User *profzei* has a script *sign_opencore.sh* that automates this process: create required folders, download and unzip OpenCore current version (0.8.4 at the time of writing), download HFSPlus.efi, check ISK keys, digitally sign files and copy them to the Signed folder. The script must be in the oc folder next to ISK.key and ISK.pem. It is slightly modified by me to suit my needs. You can also modify it to your liking. Check the drivers and tools that you use and modify the script in the signing files part to include those that are not currently included.
+User *profzei* has a script *sign_opencore.sh* that automates this process: create required folders, download and unzip OpenCore current version (0.8.7 at the time of writing), download HFSPlus.efi, check ISK keys, digitally sign files and copy them to the Signed/Downloaded folder. The script must be in the oc folder next to ISK.key and ISK.pem. It is slightly modified by me to suit my needs. You can also modify it to your liking. 
 
-Copy this text into a text editor and save it with the name *sign_opencore.sh* (you can do it on Windows).
+Copy this code on a text editor and save it into the oc folder with the name *sign_opencore.sh*.
 
 ```bash
 #!/bin/bash
@@ -187,9 +187,9 @@ Copy this text into a text editor and save it with the name *sign_opencore.sh* (
 # Licensed under the terms of the GPL v3
 
 LINK=$1
-# https://github.com/acidanthera/OpenCorePkg/releases/download/0.8.4/OpenCore-0.8.4-RELEASE.zip
+# https://github.com/acidanthera/OpenCorePkg/releases/download/0.8.7/OpenCore-0.8.7-RELEASE.zip
 VERSION=$2
-# 0.8.4
+# 0.8.7
 
 # Download and unzip OpenCore
 wget $LINK
@@ -207,43 +207,23 @@ if [ -f "./ISK.pem" ]; then
     echo "ISK.pem was decrypted successfully"
 fi
 
-# Revert to previous code for signing
-# Sign drivers
-sbsign --key ISK.key --cert ISK.pem --output ./Signed/BOOTx64.efi ./Downloaded/X64/EFI/BOOT/BOOTx64.efi
-sbsign --key ISK.key --cert ISK.pem --output ./Signed/OpenCore.efi ./Downloaded/X64/EFI/OC/OpenCore.efi
-sbsign --key ISK.key --cert ISK.pem --output ./Signed/Drivers/OpenRuntime.efi ./Downloaded/X64/EFI/OC/Drivers/OpenRuntime.efi
-sbsign --key ISK.key --cert ISK.pem --output ./Signed/Drivers/OpenCanopy.efi ./Downloaded/X64/EFI/OC/Drivers/OpenCanopy.efi
-sbsign --key ISK.key --cert ISK.pem --output ./Signed/Drivers/AudioDxe.efi ./Downloaded/X64/EFI/OC/Drivers/AudioDxe.efi
-sbsign --key ISK.key --cert ISK.pem --output ./Signed/Drivers/HfsPlus.efi ./Downloaded/HfsPlus.efi
-sbsign --key ISK.key --cert ISK.pem --output ./Signed/Tools/OpenShell.efi ./Downloaded/X64/EFI/OC/Tools/OpenShell.efi
-
 # Sign drivers by recursively looking for the .efi files in ./Downloaded directory
 # Don't sign files that start with the dot, as this is metadata files
 # Andrew Blitss's contribution
-# find ./Downloaded/X64/EFI/**/* -type f -name "*.efi" ! -name '.*' | cut -c 3- | xargs -I{} bash -c 'sbsign --key ISK.key --cert ISK.pem --output $(mkdir -p $(dirname "./Signed/{}") | echo "./Signed/{}") ./{}'
+find ./Downloaded/X64/EFI/**/* -type f -name "*.efi" ! -name '.*' | cut -c 3- | xargs -I{} bash -c 'sbsign --key ISK.key --cert ISK.pem --output $(mkdir -p $(dirname "./Signed/{}") | echo "./Signed/{}") ./{}'
 
 # Clean
 rm -rf Downloaded
 echo "Cleaned..."
 ```
 
-Copy it into the oc folder:
-
-```shell
-cp /mnt/c/Users/me/Downloads/sign_opencore.sh /home/me/efikeys/oc
-```
-
-This script needs 2 parameters to be run: OpenCore download site and version number. For example, with version 0.8.4 (current):
+This script needs 2 parameters to be run: OpenCore download site and version number. For example, with version 0.8.7 (current):
 
 ```
-sh ./sign_opencore.sh https://github.com/acidanthera/OpenCorePkg/releases/download/0.8.4/OpenCore-0.8.4-RELEASE.zip 0.8.4
+sh ./sign_opencore.sh https://github.com/acidanthera/OpenCorePkg/releases/download/0.8.7/OpenCore-0.8.7-RELEASE.zip 0.8.7
 ```
 
-At the end we will have in the Signed folder the OpenCore .efi files digitally signed with our own keys. Copy the Signed folder to a folder (outside Ubuntu) that is accessible from Windows and/or macOS to put the signed files into the OpenCore EFI folder, replacing the ones with the same name.
-
-```
-cp -r /home/me/efikeys/ /mnt/c/Users/me/Downloads/
-```
+At the end we will have in the Signed/Downloaded folder the .efi files digitally signed with our own keys. Copy the Signed folder to a folder (outside Ubuntu) that is accessible from Windows and/or macOS to put the signed files into the OpenCore EFI folder, replacing the ones with the same name.
 
 ## Include signatures into the firmware
 

@@ -197,7 +197,7 @@ unzip "OpenCore-${VERSION}-RELEASE.zip" "X64/*" -d "./Downloaded"
 rm "OpenCore-${VERSION}-RELEASE.zip"
 
 # Download HfsPlus
-wget https://github.com/acidanthera/OcBinaryData/raw/master/Drivers/HfsPlus.efi -O ./Downloaded/HfsPlus.efi
+wget https://github.com/acidanthera/OcBinaryData/raw/master/Drivers/HfsPlus.efi -O ./Downloaded/X64/EFI/OC/Drivers/HfsPlus.efi
 
 if [ -f "./ISK.key" ]; then
     echo "ISK.key was decrypted successfully"

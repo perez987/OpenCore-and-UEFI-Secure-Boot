@@ -243,7 +243,8 @@ At the end we have in the Signed/Downloaded folder the .efi files digitally sign
                 │   ├── DnsDxe.efi
                 │   ├── DpcDxe.efi
                 │   ├── Ext4Dxe.efi
-                │   ├── HiiDatabase.efi
+                │   ├── Ext4Dxe.efi
+                │   ├── HfsPlus.efi
                 │   ├── HttpBootDxe.efi
                 │   ├── HttpDxe.efi
                 │   ├── HttpUtilitiesDxe.efi

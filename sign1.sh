@@ -1,6 +1,7 @@
 #!/bin/bash
-#Copyrigth (c) 2021 by profzei
-#Licensed under the terms of the GPL v3
+# Copyrigth (c) 2021 by profzei
+# Licensed under the terms of the GPL v3
+# Modified by Lukakeiton and perez987
 
 # Linux command in Terminal
  # sh ./sign.sh 1.0.0

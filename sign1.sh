@@ -6,7 +6,6 @@
 # Linux command in Terminal
  # sh ./sign.sh 1.0.0
 
-
 # This blok is useful only the first time, uncommnet if desired
 #sudo apt update && sudo apt upgrade
 
@@ -27,12 +26,6 @@
 #	echo "Installing efitools..."
 #	sudo apt-get install efitools
 #fi
-
-# IMPORTANT!
-# Link : https://go.microsoft.com/fwlink/?linkid=2239776
-# This is the 2023 certificate, just downloaded its name is "windows uefi ca 2023.crt"
-# Rename it to WinUEFCA2023.crt to avoid issues with spaces
-# It must be copied next to sign.sh before running the script
 
 VERSION=$1
 
@@ -80,7 +73,6 @@ echo "==================================="
 echo "Creating allowed database"
 echo "==================================="
 cat ISK.esl MicWinProPCA2011_2011-10-19.esl MicCorUEFCA2011_2011-06-27.esl WinUEFCA2023.esl > db.esl
-
 
 echo "==================================="
 echo "Signing ESL files to auth"

@@ -22,6 +22,8 @@ Go to Releases and get `edk2-x64-secureboot-binaries.zip`
  
 By updating the UEFI secure keys with these files, you set the motherboard with the latest versions of Microsoft secure variables. This fixes the *Certificate revoked* or *Security violation* issue that users can have when booting Windows or Linux with UEFI Secure Boot enabled and updated BIOS that includes the 2023 certificate.
 
+---
+
 ### OpenCore and the new certificate
 
 But OpenCore users operate differently. We have to create our own secure keys, sign the OpenCore files with them and insert them in the firmware instead of (or added to) the existing ones. 

@@ -91,4 +91,4 @@ Not infrequently I have had to combine the 3 methods to fix the issue. Until now
 
 ### UTM Ubuntu VM on macOS
 
-![Ubuntu VM](img/UTM-ubuntu.png?raw=true)
+![Ubuntu VM](img/UTM-ubuntu.jpg?raw=true)

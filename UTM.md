@@ -84,4 +84,4 @@ The first step to fix it is a simple CMOS reset but it is often not enough. If i
 	- Turn the power supply back on using the switch on the rear of the unit
 	- Turn on the motherboard by pressing the case power on button.
 
-Not infrequently I have had to combine the 3 methods to fix the issue. Until now, I have always managed to recover the BIOS but it is not guaranteed that it will ever be damaged without repair.
+Not infrequently I have had to combine the 3 methods to fix the issue. Until now, I have always managed to recover the BIOS but it is not guaranteed that at some point it cannot be damaged beyond repair.

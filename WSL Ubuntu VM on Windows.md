@@ -341,19 +341,3 @@ Repeat the same for The Key Exchange Keys Database (kek) and The Platform Key (p
 ## Ending
 
 After embedding db.auth, kek.auth and pk.auth into the firmware we can boot OpenCore and macOS with UEFI Secure Boot enabled.
-
-## OpenCore Vault + UEFI Secure Boot
-
-There is a way to have UEFI Secure Boot and OpenCore vault at the same time, it's in the OpenCore Configuration.pdf file although the instructions are short and confusing in my opinion. It is a heavy task but at least it is possible to carry it out.
-
-The key is in the order the files are signed, both with personal keys for the UEFI firmware and hashes created from vault.
-
-This requires moving from macOS to Windows and viceversa a few times. In order not to have to switch from mac to windows so many times, I have installed [Ubuntu 14.04](https://mac.getutm.app/gallery/) virtual machine with [UTM](https://github.com/utmapp/UTM) on macOS. The steps are:
-
-1. On Ubuntu >> digitally sign all OC 0.8.5.efi files except OpenCore.efi
-2. On macOS >> vault the EFI folder with the signed files, including OpenCore.efi not digitally signed yet
-3. On Ubuntu >> sign the OpenCore.efi file which already has Vault applied
-4. Back in macOS >> copy the EFI folder into the EFI partition
-5. Reboot >> enable UEFI Secure Boot >> OpenCore.
-
-It is a tedious task. The most boring part is copying files between macOS and Ubuntu. UTM in theory has the option to define a shared folder to exchange files but I have not been able to make it work. I have used Wetransfer in Mac and Linux browsers to exchange files between both systems. The shared clipboard between Mac and Linux does work so at least text can be exchanged.

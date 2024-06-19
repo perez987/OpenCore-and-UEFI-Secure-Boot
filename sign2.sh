@@ -1,7 +1,7 @@
 #!/bin/bash
 #Copyrigth (c) 2021 by profzei
 #Licensed under the terms of the GPL v3
-# Modified by LUKAKEITON and perez987
+# Modified by Andrew Blitss, Andres Hurtado and perez987
 
 # Linux command in Terminal
  # sh ./sign2.sh https://github.com/acidanthera/OpenCorePkg/releases/download/1.0.0/OpenCore-1.0.0-RELEASE.zip 1.0.0

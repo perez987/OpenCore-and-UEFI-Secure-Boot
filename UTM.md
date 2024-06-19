@@ -25,14 +25,14 @@ Directory sharing can work in 2 different ways: SPICE WebDav or VirtFS. I have u
 
 In my Home folder I have created a folder to work on. I have called it Uefi-SB. Inside this folder I only need to have a script that automates the process and performs all the tasks without user intervention:
 
-- Create a folder named efikeys and switch to this folder
+- Create a folder named `efikeys` and switch to this folder
 - Create PK, KEK and db keys
 - Download the 2011 Microsoft certificates
 - Sign Microsoft certificates
 - Convert PEM files to ESL
 - Create the database of allowed signatures and hashes
 - Sign ESL files to AUTH suitable for integration into firmware
-- Exit efikeys, create the oc folder and switch to it
+- Exit `efikeys`, create the `oc` folder and switch to it
 - Copy the ISK.key, ISK.pem, PK.auth, KEK.auth and db.auth files to oc (ISK to sign OpenCore and auth to shove into the firmware)
 - Download and unzip OpenCore 1.0.0 (you can set the version in the script and in the Terminal command that runs it)
 - Download HFSPlus (thanks to Daniel Hurtado)
@@ -40,8 +40,8 @@ In my Home folder I have created a folder to work on. I have called it Uefi-SB. 
 
 The original script is from user Profzei. I use 2 slightly modified versions:
 
-- `sign1.sh`: Lukakeiton modified the code to ask if OpenLinuxBoot.efi is used and, if so, also download and sign the necessary drivers; in the end not all the drivers are signed but only those chosen by the user and the are saved  in the Uefi-SB/oc/Signed folder. [See code](sign1.sh).
-- `sign2.sh`: Andrew Blitss merged code that, with a single line, recursively signs all OpenCore files with an .efi extension and saves them in the Uefi-SB/oc/Signed/Downloaded folder. [See code](sign2.sh).
+- `sign1.sh`: Lukakeiton modified the code to ask if OpenLinuxBoot.efi is used and, if so, also download and sign the necessary drivers; in the end not all the drivers are signed but only those chosen by the user and the are saved  in the `Uefi-SB/oc/Signed` folder. [See code](sign1.sh).
+- `sign2.sh`: Andrew Blitss merged code that, with a single line, recursively signs all OpenCore files with an .efi extension and saves them in the `Uefi-SB/oc/Signed/Downloaded` folder. [See code](sign2.sh).
 
 The .auth files in the Uefi-SB/oc folder are the ones you have to integrate into the firmware.
 

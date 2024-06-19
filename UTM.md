@@ -21,6 +21,8 @@ Directory sharing can work in 2 different ways: SPICE WebDav or VirtFS. I have u
 	- Add this entry<br>`share /home/yo/Shared 9p trans=virtio,version=9p2000.L,rw,_netdev,nofail 0 0`
 	- Save with Ctrl + O and exit with Ctrl + X.
 
+---
+
 ### Creating the keys and signing OpenCore
 
 In my Home folder I have created a folder to work on. I have called it Uefi-SB. Inside this folder I only need to have a script that automates the process and performs all the tasks without user intervention:
@@ -45,6 +47,8 @@ The original script is from user Profzei. I use 2 slightly modified versions:
 
 The .auth files in the Uefi-SB/oc folder are the ones you have to integrate into the firmware.
 
+---
+
 ### Include signatures into the firmware
 
 Final step is to shove the signature files into the UEFI firmware, replacing the existing variables:
@@ -54,6 +58,8 @@ Final step is to shove the signature files into the UEFI firmware, replacing the
 - pk.auth >> **PK (Platform key)**: may be used to sign user-mode updates to PK or KEK, but not db (nor can it be used to sign executables). By default, the PK variable will be loaded with a public key issued by the hardware vendor (for example, Gigabyte).
 
 This can be done in 2 ways: BIOS menu or KeyTool. I use the BIOS menu because it is always available and I don't have to create a USB stick with an EFI partition in which to copy KeyTool.efi to the BOOT folder with the name BOOTx64.efi.
+
+---
 
 ### Issues with BIOS when modifying Secure Boot variables
 

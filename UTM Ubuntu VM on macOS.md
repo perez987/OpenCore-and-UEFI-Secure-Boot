@@ -71,7 +71,7 @@ When modifying secure variables (update, append, delete or reset to default) iss
 
 From what I have read in different places, these issues seem to be more frequent on Gigabyte motherboards but this is something I cannot be sure of. My motherboard is Gigabyte (Z390 Aorus Elite) and it has presented these issues on several occasions.
 
-The first step to fix it is Reset to Setup Mode in the Secure Boot menu of the BIOS but it is very often not enough. If it fails, a simple CMOS reset or/and a BIOS update is added. In stubborn cases, it may be necessary to boot from the backup BIOS.
+The first step to fix it is Reset to Setup Mode in the Secure Boot menu of the BIOS but it is very often not enough. If it fails, CMOS reset or/and BIOS update is added. In stubborn cases, it may be necessary to boot from the backup BIOS.
 
 1. Reset to Setup Mode: this erases the firmware keys after reboot so that the default ones or the ones created by us can be loaded.
 2. CMOS reset: most motherboards have a pin for this. With the power removed (it is better to disconnect the cable from the power supply) and the battery lifted, contact is made with a metal object for a few seconds between both pins of the bridge.

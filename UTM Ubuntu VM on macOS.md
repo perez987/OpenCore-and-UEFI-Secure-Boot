@@ -86,3 +86,9 @@ The first step to fix it is a simple CMOS reset but it is often not enough. If i
 	- Turn on the motherboard by pressing the case power on button.
 
 Not infrequently I have had to combine the 3 methods to fix the issue. Until now, I have always managed to recover the BIOS but it is not guaranteed that at some point it cannot be damaged beyond repair.
+
+---
+
+### UTM Ubuntu VM on macOS
+
+![Ubuntu VM](img/UTM-ubuntu.png?raw=true)

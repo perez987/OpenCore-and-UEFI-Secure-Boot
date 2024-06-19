@@ -1,6 +1,6 @@
 #!/bin/bash
-#Copyrigth (c) 2021 by profzei
-#Licensed under the terms of the GPL v3
+# Copyrigth (c) 2021 by profzei
+# Licensed under the terms of the GPL v3
 # Modified by Andrew Blitss, Andres Hurtado and perez987
 
 # Linux command in Terminal

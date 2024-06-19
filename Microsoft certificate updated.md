@@ -7,6 +7,8 @@ All current UEFI Microsoft certificates are expiring in 2026. These include the 
 
 Microsoft is migrating to new ones. The first update will add the **Microsoft Windows UEFI CA 2023** to the firmware db. The new certificate will be used to sign Windows boot components prior to the expiration of the **Microsoft Windows Production CA 2011**. 
 
+---
+
 ### Does my motherboard have the new certificate?
 
 Some OEM manufacturers include the 2023 certificate in recent BIOS updates. It is a process that has started recently so (quite a few) UEFI firmware do not include it yet. For example, the latest BIOS version for my motherboard is F11 and it does not have this certificate, it only has the ones from 2011.

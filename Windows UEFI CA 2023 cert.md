@@ -55,8 +55,8 @@ But now you can't boot OpenCore with Secure Boot enabled because it is no longer
 
 **Note**: I have also generated OpenCore digital signatures by adding the 2023 certificate to the previously existing 2011 ones. Apparently the process has finished without errors and I have got the .auth files for the firmware and the digitally signed Opencore .efi files. But every time I have loaded these keys into the firmware, the BIOS has become unusable with beep error (bricked) and I have had to erase CMOS and boot from backup BIOS to recover it.
 
-I got the 2023 certificate directly from Microsoft, the [link](https://go.microsoft.com/fwlink/?linkid=2239776) is in the Secure Boot Objects site. Downloaded file is `windows uefi ca 2023.crt` and it is not difficult to add it to the script that signs OpenCore within Ubuntu. But something is wrong when doing it like this because every time I have tried it I have had the severe problem with the BIOS.
-So be careful if you try this.
+I got the 2023 certificate directly from Microsoft, the [link](https://go.microsoft.com/fwlink/?linkid=2239776) is in the Secure Boot Objects site. Downloaded file is `windows uefi ca 2023.crt` and it is not difficult to add it to the script that signs OpenCore within Ubuntu. But something is wrong when doing it like this because every time I have tried it I have had the severe problem with the BIOS.<br>
+**So be careful if you try this**.
 
 ---
 

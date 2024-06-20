@@ -15,7 +15,7 @@ In the Secure Boot section there are usually options to restore default factory 
 
 ![Key Management](img/Key-Management.jpeg?raw=true)
 
-If you have modified the keystores before (if it is not the first time) it is highly recommended, to avoid errors, restore default factory keys before adding / editing the new ones >> Restore Factory keys >> Install factory defaults >> Yes.  Another option is Reset To Setup Mode that leaves the secure variables blank (empty) after reboot, allowing us to reset them to default or add our own.
+If you have modified the keystores before (if it is not the first time) it is highly recommended, to avoid errors, restore default factory keys before adding / editing the new ones >> Restore Factory keys >> Install factory defaults >> Yes.  Another option is Reset To Setup Mode that erases the firmware keys after reboot so that the default ones or the ones created by us can be loaded.
 
 ![Restory Factory Keys.jpeg](img/Restory-Factory-Keys.jpeg?raw=true)
 

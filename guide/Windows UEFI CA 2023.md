@@ -68,7 +68,7 @@ I got the 2023 certificate directly from Microsoft, the [link](https://go.micros
 
 How did I add the 2023 certificate?
 
-1. Downloaded from [Microsoft](https://go.microsoft.com/fwlink/?linkid=2239776). Just downloaded its name is `windows uefi ca 2023.crt`. It must be copied next to sign1.sh or sign2.sh before running the script
+1. Downloaded from Microsoft. Just downloaded its name is `windows uefi ca 2023.crt`. It must be copied next to sign1.sh or sign2.sh before running the script
 2. Added to the 2011 certificates code blocks of the script I was going to run:
 
 ```bash

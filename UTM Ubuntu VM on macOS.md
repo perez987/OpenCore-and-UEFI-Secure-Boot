@@ -52,7 +52,7 @@ The .auth files in the Uefi-SB/oc folder are the ones you have to integrate into
 
 ### Include signatures into the firmware
 
-Final step is to shove the signature files into the UEFI firmware, replacing the existing variables:
+Final step is to insert the signature files into the UEFI firmware, replacing the existing variables:
 
 - db.auth >> **db (Signatures Database)**: UEFI signature database which may contain (any mixture of) public keys, signatures and plain hashes. It functions essentially as a whitelist of authorized keys and signatures to boot executables. By default, the db variable will be loaded with a set of public keys issued by various vendors authorized by Microsoft
 - kek.auth >> **KEK (Key Exchange Keys)**: signature database containing one (or more) public keys. db updates must be signed by the private key of one of these keys (the PK cannot be used for this). By default, the KEK variable will be loaded with a public key issued by Microsoft

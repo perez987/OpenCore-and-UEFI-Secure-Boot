@@ -57,7 +57,7 @@ But now you can't boot OpenCore with Secure Boot enabled because it is no longer
 
 **Note**: You can add only `DefaultDb.bin` (2023 updated certificate) by appending (not replacing) to the existing db variables. If these are the ones we have created for OpenCore, the 2023 certificate is added to the 3 variables that already exist: our own KEK and the 2 Microsoft certificates from 2011. With this configuration, OpenCore boots fine with UEFI Secure Boot enabled.
 
-![WIndows UEFFI CA 2023 Management](../img/DB-2023cert.jpg?raw=true)
+![WIndows UEFFI CA 2023 Management](../img/DB-2023cert.jpg)
 
 ---
 

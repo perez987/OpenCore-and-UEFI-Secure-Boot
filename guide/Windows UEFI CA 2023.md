@@ -58,6 +58,31 @@ But now you can't boot OpenCore with Secure Boot enabled because it is no longer
 I got the 2023 certificate directly from Microsoft, the [link](https://go.microsoft.com/fwlink/?linkid=2239776) is in the Secure Boot Objects site. Downloaded file is `windows uefi ca 2023.crt` and it is not difficult to add it to the script that signs OpenCore within Ubuntu. But something is wrong when doing it like this because every time I have tried it I have had the severe problem with the BIOS.<br>
 **So be careful if you try this**.
 
+**Note**: to add the 2023 certificate:
+
+1.  Download it from [Microsoft](https://go.microsoft.com/fwlink/?linkid=2239776). Just downloaded its name is `windows uefi ca 2023.crt`. It must be copied next to sign1.sh or sign2.sh before running the script
+2. Add the new certificate to 2011 certificates code blocks of each script:
+
+```
+echo "==================================="
+echo "Signing Microsoft certificates"
+echo "==================================="
+openssl x509 -in MicWinProPCA2011_2011-10-19.crt -inform DER -out MicWinProPCA2011_2011-10-19.pem -outform PEM
+openssl x509 -in MicCorUEFCA2011_2011-06-27.crt -inform DER -out MicCorUEFCA2011_2011-06-27.pem -outform PEM
+openssl x509 -in 'windows uefi ca 2023.crt' -inform DER -out 'windows uefi ca 2023.pem' -outform PEM
+
+echo "==================================="
+echo "Converting PEM files to ESL"
+echo "==================================="
+cert-to-efi-sig-list -g $(uuidgen) MicWinProPCA2011_2011-10-19.pem MicWinProPCA2011_2011-10-19.esl
+cert-to-efi-sig-list -g $(uuidgen) MicCorUEFCA2011_2011-06-27.pem MicCorUEFCA2011_2011-06-27.esl
+cert-to-efi-sig-list -g $(uuidgen) 'windows uefi ca 2023.pem' 'windows uefi ca 2023.esl'
+
+echo "==================================="
+echo "Creating allowed database"
+echo "==================================="
+cat ISK.esl MicWinProPCA2011_2011-10-19.esl MicCorUEFCA2011_2011-06-27.esl 'windows uefi ca 2023.esl' > db.esl
+```
 ---
 
 ### Links of interest

@@ -6,7 +6,7 @@
 
 - [**How to insert the signatures into the UEFI firmware**](Embed%20keys%20in%20the%20firmware.md)<br><br>
 
-- [**Issues with BIOS when modifying Secure Boot variables**](BIOS%20issues%20and%20possible%20fixes.md)<br><br>
+- [**BIOS issues when modifying Secure Boot variables**](BIOS%20issues%20and%20possible%20fixes.md)<br><br>
 
 - [**Windows Production CA 2011 updated by Windows UEFI CA 2023**](Windows%20UEFI%20CA%202023%20cert.md)
 

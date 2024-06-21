@@ -1,5 +1,5 @@
 
-# Include signatures into the UEFI firmware
+# How to insert signatures into the UEFI firmware
 
 Final step of the process is to insert the signature files into the firmware, replacing the existing variables in this order:
 

@@ -61,9 +61,9 @@ I got the 2023 certificate directly from Microsoft, the [link](https://go.micros
 **Note**: to add the 2023 certificate:
 
 1.  Download it from [Microsoft](https://go.microsoft.com/fwlink/?linkid=2239776). Just downloaded its name is `windows uefi ca 2023.crt`. It must be copied next to sign1.sh or sign2.sh before running the script
-2. Add the new certificate to 2011 certificates code blocks of each script:
+2. Add the new item to the 2011 certificates code blocks of the script you plain to use:
 
-```
+```bash
 echo "==================================="
 echo "Signing Microsoft certificates"
 echo "==================================="

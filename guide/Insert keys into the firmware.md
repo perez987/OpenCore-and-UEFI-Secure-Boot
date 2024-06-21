@@ -53,4 +53,4 @@ Repeat the same for Key Exchange Keys Database (KEK) and Platform Key (PK).
 
 ### Ending
 
-After embedding db.auth, kek.auth and pk.auth into the firmware we can boot OpenCore and macOS with UEFI Secure Boot enabled.
+After inserting db.auth, kek.auth and pk.auth into the firmware, we can boot OpenCore and macOS with UEFI Secure Boot enabled.

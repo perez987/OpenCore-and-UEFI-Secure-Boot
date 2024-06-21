@@ -47,21 +47,29 @@ To install it from the BIOS menu you must download it in a compatible format. Th
 	4. `DefaultKek.bin`
 	5. `DefaultDb.bin`
 	6. `DefaultDbx.bin`
-7. Go to the BIOS menú >> Secure Boot >> Key management >> replace the secure variables (Embed keys in the firmware.md)..
+7. Go to the BIOS menú >> Secure Boot >> Key management >> replace the secure variables.
  
 By updating the UEFI secure keys with these files, you set the motherboard with the latest versions of Microsoft secure variables. This fixes the *Certificate revoked* or *Security violation* issue that users can have when booting Windows or Linux with UEFI Secure Boot enabled and updated BIOS that includes the 2023 certificate.
 
 But now you can't boot OpenCore with Secure Boot enabled because it is no longer signed with the existing keys in the firmware.
+
+---
+
+**Note**: You can add only `DefaultDb.bin` (2023 updated certificate) by appending (not replacing) to the existing db variables. If these are the ones we have created for OpenCore, the 2023 certificate is added to the 3 variables that already exist: our own KEK and the 2 Microsoft certificates from 2011. With this configuration, OpenCore boots fine with UEFI Secure Boot enabled.
+
+![WIndows UEFFI CA 2023 Management](../img/DB-2023cert.jpg?raw=true)
+
+---
 
 **Note**: I have also generated OpenCore digital signatures by adding the 2023 certificate to the previously existing 2011 ones. Apparently the process has finished without errors and I have got the .auth files for the firmware and the digitally signed Opencore .efi files. But every time I have loaded these keys into the firmware, the BIOS has become unusable with beep error (bricked) and I have had to erase CMOS and boot from backup BIOS to recover it.
 
 I got the 2023 certificate directly from Microsoft, the [link](https://go.microsoft.com/fwlink/?linkid=2239776) is in the Secure Boot Objects site. Downloaded file is `windows uefi ca 2023.crt` and it is not difficult to add it to the script that signs OpenCore within Ubuntu. But something is wrong when doing it like this because every time I have tried it I have had the severe problem with the BIOS.<br>
 **So be careful if you try this**.
 
-**Note**: to add the 2023 certificate:
+How did I add the 2023 certificate?
 
-1.  Download it from [Microsoft](https://go.microsoft.com/fwlink/?linkid=2239776). Just downloaded its name is `windows uefi ca 2023.crt`. It must be copied next to sign1.sh or sign2.sh before running the script
-2. Add the new item to the 2011 certificates code blocks of the script you plain to use:
+1. Downloaded from [Microsoft](https://go.microsoft.com/fwlink/?linkid=2239776). Just downloaded its name is `windows uefi ca 2023.crt`. It must be copied next to sign1.sh or sign2.sh before running the script
+2. Added to the 2011 certificates code blocks of the script you plain to use:
 
 ```bash
 echo "==================================="

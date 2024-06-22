@@ -1,6 +1,6 @@
 ## UEFI Secure Boot with OpenCore<br><br>
 
- - [**On macOS using UTM and Ubuntu Desktop in graphical mode**](guide/UTM%20Ubuntu%20VM%20on%20macOS.md)<br><br>
+![Icono](img/Digidentity.png) [**On macOS using UTM and Ubuntu Desktop in graphical mode**](guide/UTM%20Ubuntu%20VM%20on%20macOS.md)<br><br>
 
 - [**On Windows using WSL and Ubuntu in command line mode**](guide/WSL%20Ubuntu%20VM%20on%20Windows.md)<br><br>
 

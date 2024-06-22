@@ -8,7 +8,7 @@
 
 - [**BIOS issues when modifying Secure Boot variables**](guide/BIOS%20issues%20and%20possible%20fixes.md)<br><br>
 
-- [**Microsoft 2011 certificate updated by Windows UEFI CA 2023**](guide/Windows%20UEFI%20CA%202023.md)
+- [**Microsoft 2011 certificate updated by 2023 certificate**](guide/Windows%20UEFI%20CA%202023.md)
 
 
 

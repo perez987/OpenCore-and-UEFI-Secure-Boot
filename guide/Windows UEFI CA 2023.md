@@ -93,6 +93,15 @@ cat ISK.esl MicWinProPCA2011_2011-10-19.esl MicCorUEFCA2011_2011-06-27.esl 'wind
 ```
 ---
 
+### Summary
+
+- Latest version of my BIOS does not include the 2023 certificate.
+- I can boot digitally signed OpenCore with Secure Boot enabled after inserting my own keys even if I don't have the 2023 certificate in the firmware.
+- I can also boot digitally signed OpenCore with Secure Boot enabled after inserting my own keys having the 2023 certificate in the firmware.
+- But I cannot boot digitally signed OpenCore with Secure Boot enabled after inserting my own keys if I have included the 2023 certificate in them when creating the digital signatures from Linux.
+
+---
+
 ### Links of interest
 
 [KB5036210: Updating Microsoft Secure Boot keys Windows UEFI CA 2023 certificate to Secure Boot Allowed Signature Database (DB)](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/updating-microsoft-secure-boot-keys/ba-p/4055324)

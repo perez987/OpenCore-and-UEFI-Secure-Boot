@@ -13,20 +13,20 @@ This can be done in 2 ways: BIOS setting menu or KeyTool.
 
 In the Secure Boot section there are usually options to restore default factory keys or to edit variables separately. On my motherboard (Z390 Aorus Elite) this menu is in Boot >> Secure Boot tab >> Key Management. 
 
-![Key Management](../img/Key-Management.jpeg)
+![Key Management](../img/Key-Management.jpg)
 
 If you have modified the keystores before (if it is not the first time) it is highly recommended, to avoid errors, restore default factory keys before adding / editing the new ones >> Restore Factory keys >> Install factory defaults >> Yes.  Another option is Reset To Setup Mode that erases the firmware keys after reboot so that the default ones or the ones created by us can be loaded.
 
-![Restory Factory Keys.jpeg](../img/Restory-Factory-Keys.jpeg)
+![Restory Factory Keys.jpeg](../img/Restory-Factory-Keys.jpg)
 
 Now you can edit the keys. Select the variable that you are going to modify in this order: Authorized Signatures (db) >> Key Exchange Keys (KEK) >> Platform Key (PK). For each variable you can see details, export, update (replace), add to the existing ones or delete. For example, for Authorized Signatures, options are Details / Export / Update / Append / Delete.
 
-![DB Options](../img/DB-options.jpeg)
+![DB Options](../img/DB-options.jpg)
 
 To replace one variable with another: select Update >> search in the USB device >> locate and select db.auth >> this allowed signatures database replaces the current one. Likewise with Append if you want to add it to the existing one instead of replacing it. You can use Append with db.auth and kek.auth but pk.auth only allows replacement.<br>
 To see the details, select Details >> variable's details are displayed.<br>
 
-![DB Details](../img/DB-details.jpeg)
+![DB Details](../img/DB-details.jpg)
 
 ### KeyTool
 

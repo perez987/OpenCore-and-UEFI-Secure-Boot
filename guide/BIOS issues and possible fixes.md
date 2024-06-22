@@ -1,6 +1,6 @@
 
 
-## Issues with BIOS when modifying Secure Boot variables
+## BIOS issues when modifying Secure Boot variables
 
 When modifying secure variables (update, append, delete or reset to default) issues may occur, some of which are not easy to fix:
 

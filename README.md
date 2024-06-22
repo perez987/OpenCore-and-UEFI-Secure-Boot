@@ -1,6 +1,13 @@
 ## UEFI Secure Boot with OpenCore<br><br>
 
-![Icono](img/Digidentity.png) [**On macOS using UTM and Ubuntu Desktop in graphical mode**](guide/UTM%20Ubuntu%20VM%20on%20macOS.md)<br><br>
+<table>
+  <tr>
+    <td><img src="img/Digidentity.png" width="48px"></td>
+    <td><a href="guide/UTM%20Ubuntu%20VM%20on%20macOS.md">On macOS using UTM and Ubuntu Desktop in graphical mode></td>
+  </tr>
+</table>
+
+<img src="img/Digidentity.png" width="48px"></img> [**On macOS using UTM and Ubuntu Desktop in graphical mode**](guide/UTM%20Ubuntu%20VM%20on%20macOS.md)<br><br>
 
 - [**On Windows using WSL and Ubuntu in command line mode**](guide/WSL%20Ubuntu%20VM%20on%20Windows.md)<br><br>
 
@@ -9,6 +16,8 @@
 - [**BIOS issues when modifying Secure Boot variables**](guide/BIOS%20issues%20and%20possible%20fixes.md)<br><br>
 
 - [**Microsoft 2011 certificate updated by 2023 certificate**](guide/Windows%20UEFI%20CA%202023.md)
+
+<!-- ![Icono](img/Digidentity.png) -->
 
 
 

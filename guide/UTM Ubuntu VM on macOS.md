@@ -41,10 +41,10 @@ In my Home folder I have created a folder to work on. I have called it Uefi-SB. 
 - Download HFSPlus (thanks to Daniel Hurtado)
 - Sign OpenCore .efi files (Drivers, Tools and OpenCore.efi).
 
-The original script is from user Profzei. I use 2 slightly modified versions:
+Original script is from user Profzei based on Roderick W. Smith. I use 2 slightly modified versions:
 
-- `sign1.sh`: Lukakeiton modified the code to ask if OpenLinuxBoot.efi is used and, if so, also download and sign the necessary drivers; in the end not all the drivers are signed but only those chosen by the user and the are saved  in the Uefi-SB/oc/Signed folder. [See code](../src/sign1.sh).
-- `sign2.sh`: Andrew Blitss merged code that, with a single line, recursively signs all OpenCore files with an .efi extension and saves them in the Uefi-SB/oc/Signed/Downloaded folder. [See code](../src/sign2.sh).
+- `sign1.sh`: Lukakeiton modified the code to ask if OpenLinuxBoot.efi is used and, if so, also download and sign the required drivers; in the end not all the drivers are signed but only those chosen by the user and the are saved  in the Uefi-SB/oc/Signed folder. [See code](../src/sign1.sh).
+- `sign2.sh`: Andres Hurtado added HFSPlus.efi. Andrew Blitss added recursively signing of all OpenCore files with an .efi extension. [See code](../src/sign2.sh).
 
 The .auth files in the Uefi-SB/oc folder are the ones you have to integrate into the firmware.
 

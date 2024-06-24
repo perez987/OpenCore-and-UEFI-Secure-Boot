@@ -1,5 +1,6 @@
 
 #!/bin/bash
+# Copyright (c) 2015 by Roderick W. Smith
 # Copyrigth (c) 2021 by profzei
 # Licensed under the terms of the GPL v3
 # Modified by Lukakeiton and perez987

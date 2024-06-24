@@ -75,7 +75,6 @@ echo "Create allowed database"
 echo "==================================="
 cat ISK.esl MicWinProPCA2011_2011-10-19.esl MicCorUEFCA2011_2011-06-27.esl > db.esl
 
-
 echo "==================================="
 echo "Sign ESL files to auth"
 echo "==================================="

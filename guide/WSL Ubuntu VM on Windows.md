@@ -178,7 +178,7 @@ cp ISK.key ISK.pem oc
 cd oc
 ```
 
-User *profzei* has a script *sign_opencore.sh* that automates this process: create required folders, download and unzip OpenCore current version (0.8.7 at the time of writing), download HFSPlus.efi, check ISK keys, digitally sign files and copy them to the Signed/Downloaded folder. The script must be in the oc folder next to ISK.key and ISK.pem. It is slightly modified by me to suit my needs. You can also modify it to your liking. 
+User *profzei* has a script *sign_opencore.sh* (based on a previous one by Roderick W. Smith) that automates this process: create required folders, download and unzip OpenCore current version (0.8.7 at the time of writing), download HFSPlus.efi, check ISK keys, digitally sign files and copy them to the Signed/Downloaded folder. The script must be in the oc folder next to ISK.key and ISK.pem. It is slightly modified by me to suit my needs. You can also modify it to your liking. 
 
 Copy this code on a text editor and save it into the oc folder with the name *sign_opencore.sh*.
 

@@ -146,7 +146,6 @@ sbsign --key ISK.key --cert ISK.pem --output ./Signed/EFI/OC/Tools/OpenShell.efi
 sbsign --key ISK.key --cert ISK.pem --output ./Signed/EFI/OC/Drivers/HfsPlus.efi ./Signed/Download/HfsPlus.efi
 sbsign --key ISK.key --cert ISK.pem --output ./Signed/EFI/OC/Drivers/AudioDxe.efi ./Signed/Download/X64/EFI/OC/Drivers/AudioDxe.efi
 
-
 if [ "$LUKA" = "$LUKA1" ] || [ "$LUKA" = "$LUKA2" ]; then
 	sbsign --key ISK.key --cert ISK.pem --output ./Signed/EFI/OC/Drivers/OpenLinuxBoot.efi ./Signed/Download/X64/EFI/OC/Drivers/OpenLinuxBoot.efi
 	sbsign --key ISK.key --cert ISK.pem --output ./Signed/EFI/OC/Drivers/ext4_x64.efi ./Signed/Download/ext4_x64.efi

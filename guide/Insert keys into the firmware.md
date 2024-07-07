@@ -1,7 +1,7 @@
 
-# How to insert signatures into the UEFI firmware
+# How to insert signatures in the UEFI firmware
 
-Final step of the process is to insert the signature files into the firmware, replacing the existing variables in this order:
+Final step of the process is to insert the signature files in the firmware, replacing the existing variables in this order:
 
 - db.auth >> Authorized Signatures
 - kek.auth >> KEK (Key Exchange Keys)

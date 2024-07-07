@@ -19,7 +19,7 @@
   </tr>
   <tr>
     <td><img src="img/Microformats.png" width="36px"></td>
-    <td><a href="guide/Insert%20keys%20into%20the%20firmware.md"><b>How to insert signatures into the firmware (BIOS or KeyTool)</b></td>
+    <td><a href="guide/Insert%20keys%20into%20the%20firmware.md"><b>How to insert signatures in the firmware (BIOS or KeyTool)</b></td>
   </tr>
   <tr>
     <td></td>

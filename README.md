@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <td><img src="img/Citrix.png" width="32px"></td>
+    <td><img src="img/Digidentity.png" width="32px"></td>
     <td><a href="guide/The%20easy%20way.md"><b>The easy way (no Linux nor Windows needed)</b></td>
   </tr>
   <tr>
@@ -34,7 +34,7 @@
     <td></td>
   </tr>
   <tr>
-    <td><img src="img/Digidentity.png" width="36px"></td>
+    <td><img src="img/Citrix.png" width="36px"></td>
     <td><a href="guide/BIOS%20issues%20and%20possible%20fixes.md"><b>BIOS issues when modifying Secure Boot variables</b></td>
   </tr>
   <tr>

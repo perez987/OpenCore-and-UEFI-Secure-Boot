@@ -42,7 +42,7 @@ This method seems to have a lower risk of ending up with a locked or even bricke
 
 ### Source
 
-*slose1* on his [GitHub site](https://github.com/slose1/B460M-aorus-elite-Opencore). 
+[slose1](https://github.com/slose1/B460M-aorus-elite-Opencore)
 
 This user proposes adding some macOS files to the db variable in addition to the OpenCore files, these are:
 

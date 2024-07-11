@@ -2,6 +2,14 @@
 
 <table>
   <tr>
+    <td><img src="img/Citrix.png" width="32px"></td>
+    <td><a href="guide/The%20easy%20way.md"><b>The easy way (no Linux nor Windows needed)</b></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
     <td><img src="img/Ubuntu.png" width="32px"></td>
     <td><a href="guide/UTM%20Ubuntu%20VM%20on%20macOS.md"><b>On macOS using UTM and Ubuntu Desktop in graphical mode</b></td>
   </tr>

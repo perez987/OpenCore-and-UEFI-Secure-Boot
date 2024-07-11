@@ -52,7 +52,7 @@ This user proposes adding some macOS files to the db variable in addition to the
 - /usr/standalone/i386/apfs_aligned.efi
 - /usr/standalone/i386/apfs.efi
 
-They must be copied to the EFI folder on the USB stick with OpenCore and registered from there with the Enroll EFI Image option as we did with .efi files.
+They must be copied to the OpenCore EFI folder on the USB stick and registered with the Enroll EFI Image option as we did with the OpenCore .efi files.
 
 But I have tested with and without these macOS files enrolled in the firmware and OpenCore (and macOS) boot fine both ways.
 

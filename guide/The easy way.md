@@ -54,7 +54,7 @@ This user proposes adding some macOS files to the db variable in addition to the
 
 They must be copied to the OpenCore EFI folder on the USB stick and registered with the Enroll EFI Image option as we did with the OpenCore .efi files.
 
-But I have tested with and without these macOS files enrolled in the firmware and OpenCore (and macOS) boot fine both ways.
+But I have tested **with and without** enrolling these macOS files in the firmware and OpenCore (and macOS) boot fine both ways.
 
 **Note**: if you enroll the macOS files, every time you update macOS you must replace the Boot.efi file of the i386 folder and do Enroll EfI Image again.
 

@@ -1,14 +1,15 @@
-
 #!/bin/bash
 # Copyright (c) 2015 by Roderick W. Smith
 # Copyrigth (c) 2021 by profzei
 # Licensed under the terms of the GPL v3
-# Modified by Lukakeiton and perez987
+# Modified by LUKAKEITON and perez987
 
 # Linux command in Terminal
- # sh ./sign.sh 1.0.0
+# sh ./sign.sh 1.0.0
 
-# This blok is useful only the first time, uncommnet if desired
+
+# Block for the first boot or updating Ubuntu
+# Uncommnet if desired
 #sudo apt update && sudo apt upgrade
 
 #if ! command -v unzip &> /dev/null
@@ -35,11 +36,8 @@ echo "==================================="
 echo "Creating efikeys folder"
 echo "==================================="
 mkdir efikeys
-echo "==================================="
-echo "Copying 2023 cert to efikeys"
-echo "==================================="
-cp WinUEFCA2023.crt efikeys/
 cd efikeys
+
 echo "==================================="
 echo "Creating PK, KEK and db keys"
 echo "==================================="
@@ -59,7 +57,6 @@ echo "Signing Microsoft certificates"
 echo "==================================="
 openssl x509 -in MicWinProPCA2011_2011-10-19.crt -inform DER -out MicWinProPCA2011_2011-10-19.pem -outform PEM
 openssl x509 -in MicCorUEFCA2011_2011-06-27.crt -inform DER -out MicCorUEFCA2011_2011-06-27.pem -outform PEM
-openssl x509 -in WinUEFCA2023.crt -inform DER -out WinUEFCA2023pem -outform PEM
 
 echo "==================================="
 echo "Converting PEM files to ESL"
@@ -69,12 +66,12 @@ cert-to-efi-sig-list -g $(uuidgen) KEK.pem KEK.esl
 cert-to-efi-sig-list -g $(uuidgen) ISK.pem ISK.esl
 cert-to-efi-sig-list -g $(uuidgen) MicWinProPCA2011_2011-10-19.pem MicWinProPCA2011_2011-10-19.esl
 cert-to-efi-sig-list -g $(uuidgen) MicCorUEFCA2011_2011-06-27.pem MicCorUEFCA2011_2011-06-27.esl
-cert-to-efi-sig-list -g $(uuidgen) WinUEFCA2023.pem WinUEFCA2023.esl
 
 echo "==================================="
 echo "Creating allowed database"
 echo "==================================="
-cat ISK.esl MicWinProPCA2011_2011-10-19.esl MicCorUEFCA2011_2011-06-27.esl WinUEFCA2023.esl > db.esl
+cat ISK.esl MicWinProPCA2011_2011-10-19.esl MicCorUEFCA2011_2011-06-27.esl > db.esl
+
 
 echo "==================================="
 echo "Signing ESL files to auth"
@@ -145,6 +142,7 @@ sbsign --key ISK.key --cert ISK.pem --output ./Signed/EFI/OC/Drivers/ToggleSipEn
 sbsign --key ISK.key --cert ISK.pem --output ./Signed/EFI/OC/Tools/OpenShell.efi ./Signed/Download/X64/EFI/OC/Tools/OpenShell.efi
 sbsign --key ISK.key --cert ISK.pem --output ./Signed/EFI/OC/Drivers/HfsPlus.efi ./Signed/Download/HfsPlus.efi
 sbsign --key ISK.key --cert ISK.pem --output ./Signed/EFI/OC/Drivers/AudioDxe.efi ./Signed/Download/X64/EFI/OC/Drivers/AudioDxe.efi
+
 
 if [ "$LUKA" = "$LUKA1" ] || [ "$LUKA" = "$LUKA2" ]; then
 	sbsign --key ISK.key --cert ISK.pem --output ./Signed/EFI/OC/Drivers/OpenLinuxBoot.efi ./Signed/Download/X64/EFI/OC/Drivers/OpenLinuxBoot.efi

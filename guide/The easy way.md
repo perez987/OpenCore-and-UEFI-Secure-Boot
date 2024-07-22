@@ -10,8 +10,8 @@ What is proposed is **to enroll the OpenCore .efi files to the db secure variabl
 
 2.- macOS
 
-- Create a USB stick and put OpenCore on its EFI partition in the usual way
-
+- Create a USB stick and put OpenCore on the EFI partition in the usual way
+- Get the file /usr/standalone/i386/boot.efi and put it in the EFI folder of the USB stick
 - Restart
 
 3.- BIOS:
@@ -25,20 +25,21 @@ What is proposed is **to enroll the OpenCore .efi files to the db secure variabl
 	- EFI/OC/OpenCore.efi
 	- EFI/OC/Driver/*.efi
 	- EFI/OC/Tools/*.efi
+	- EFI/boot.efi
+
 - Restart
 
 4.- BIOS: Enable UEFI Secure Boot and reboot to select boot device
  
-
 5.- Select partition 1 of the USB stick and check if OpenCore and macOS boot as expected.
 
 If everything works well, you can boot with this same version of OpenCore from any internal or external drive with UEFI Secure Boot enabled.
 
-Whenever you update OpenCore, you need to replace OpenCore .efi files. Maybe it's better to do Secure Boot >> Key management >> Reset to Default Keys before enrolling the new .efi files.
+Whenever you update OpenCore, you need to replace OpenCore .efi files. And every time you update macOS you must get the new boot.efi file of the i386 folder and do Enroll EfI Image again. Maybe it's better to do Secure Boot >> Key management >> Reset to Default Keys before enrolling the new .efi files.
 
-Windows still boots fine with UEFI Secure Boot enabled as the OEM secure variables and Microsoft certificates registered in the firmware have not been changed.
+Windows still boots fine with UEFI Secure Boot enabled as OEM secure variables and Microsoft certificates registered in the firmware have not been changed.
 
-This method seems to have a lower risk of ending up with a locked or even bricked BIOS.
+This method seems to have a much lower risk of ending up with a locked or even bricked BIOS.
 
 ### Source
 
@@ -46,15 +47,13 @@ This method seems to have a lower risk of ending up with a locked or even bricke
 
 This user proposes adding some macOS files to the db variable in addition to the OpenCore files, these are:
 
-- /usr/standalone/firmware/FUD/MultiUpdater/MultiUpdater.efi
-- /usr/standalone/firmware/FUD/USBCAccessoryFirmwareUpdater/HPMUtil.efi
 - /usr/standalone/i386/boot.efi
 - /usr/standalone/i386/apfs_aligned.efi
 - /usr/standalone/i386/apfs.efi
+- /usr/standalone/firmware/FUD/MultiUpdater/MultiUpdater.efi
+- /usr/standalone/firmware/FUD/USBCAccessoryFirmwareUpdater/HPMUtil.efi
 
-They must be copied to the OpenCore EFI folder on the USB stick and registered with the Enroll EFI Image option as we did with the OpenCore .efi files.
+These files must be copied to the OpenCore EFI folder on the USB stick and registered with the Enroll EFI Image option as we did with OpenCore .efi files.
 
-But I have tested **with and without** enrolling these macOS files in the firmware and OpenCore (and macOS) boot fine both ways.
-
-**Note**: if you enroll the macOS files, every time you update macOS you must replace the Boot.efi file of the i386 folder and do Enroll EfI Image again.
+But I have tested **with and without** enrolling these macOS files in the firmware and I have seen that the only file required, at least in my case, is **boot.efi**. I have tried enrolling only boot.efi and OpenCore .efi files and OpenCore boots fine with UEFI Secure Boot enabled. Of course it also does enrolling up the other 4 files too but to me they don't seem to be necessary.
 

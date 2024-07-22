@@ -37,6 +37,8 @@ If everything works well, you can boot with this same version of OpenCore from a
 
 Whenever you update OpenCore, you need to replace OpenCore .efi files. And every time you update macOS you must get the new boot.efi file of the i386 folder and do Enroll EfI Image again. Maybe it's better to do Secure Boot >> Key management >> Reset to Default Keys before enrolling the new .efi files.
 
+Users who boot several versions of macOS on the same PC machine (e.g. I have 3 disks, Sonoma, Ventura and Sequoia beta) should know that the boot.efi file is different from one to another so you have to enroll in the firmware the boot.efi file for each system. If this is not done, you may get OCB StartImage Failed errors when selecting a disk in the OpenCore picker.
+
 Windows still boots fine with UEFI Secure Boot enabled as OEM secure variables and Microsoft certificates registered in the firmware have not been changed.
 
 This method seems to have a much lower risk of ending up with a locked or even bricked BIOS.

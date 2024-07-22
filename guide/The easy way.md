@@ -47,7 +47,7 @@ This method seems to have a much lower risk of ending up with a locked or even b
 
 [slose1](https://github.com/slose1/B460M-aorus-elite-Opencore)
 
-This user proposes adding some macOS files to the db variable in addition to the OpenCore files, these are:
+This user proposes enrolling 5 macOS files to the db variable in addition to the OpenCore files, these are:
 
 - /usr/standalone/i386/boot.efi
 - /usr/standalone/i386/apfs_aligned.efi
@@ -55,7 +55,5 @@ This user proposes adding some macOS files to the db variable in addition to the
 - /usr/standalone/firmware/FUD/MultiUpdater/MultiUpdater.efi
 - /usr/standalone/firmware/FUD/USBCAccessoryFirmwareUpdater/HPMUtil.efi
 
-These files must be copied to the OpenCore EFI folder on the USB stick and registered with the Enroll EFI Image option as we did with OpenCore .efi files.
-
-But I have tested **with and without** enrolling these macOS files in the firmware and I have seen that the only file required, at least in my case, is **boot.efi**. I have tried enrolling only boot.efi and OpenCore .efi files and OpenCore boots fine with UEFI Secure Boot enabled. Of course it also does enrolling up the other 4 files too but to me they don't seem to be necessary.
+But I have tested **with and without** enrolling these macOS files in the firmware and I have seen that the only file required, at least in my case, is **boot.efi**. I have tried enrolling only boot.efi and OpenCore .efi files and OpenCore boots fine with UEFI Secure Boot enabled. Of course it also does enrolling the other 4 files too but to me they don't seem to be necessary.
 

@@ -11,7 +11,7 @@ What is proposed is **to enroll the OpenCore .efi files to the db secure variabl
 2.- macOS
 
 - Create a USB stick and put OpenCore on the EFI partition in the usual way
-- Get the file /usr/standalone/i386/boot.efi and put it in the EFI folder of the USB stick
+- Get the file `/usr/standalone/i386/boot.efi `and put it in the EFI folder of the USB stick
 - Restart
 
 3.- BIOS:

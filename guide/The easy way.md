@@ -45,7 +45,7 @@ This method seems to have a much lower risk of ending up with a locked or even b
 
 ### Source
 
-[slose1](https://github.com/slose1/B460M-aorus-elite-Opencore)
+~~[slose1](https://github.com/slose1/B460M-aorus-elite-Opencore)~~ (link not accessible anymore).
 
 This user proposes enrolling 5 macOS files to the db variable in addition to the OpenCore files, these are:
 
